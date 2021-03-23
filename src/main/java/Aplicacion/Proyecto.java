@@ -19,12 +19,9 @@ public class Proyecto {
     }
 
 
-    public boolean altaPersona(Personas persona){
-        if(!personas.contains(persona)) {
+    public String altaPersona(Personas persona){
             personas.add(persona);
-            return true;
-        }
-        return false;
+            return "Se ha añadido la persona";
     }
 
 
@@ -36,28 +33,16 @@ public class Proyecto {
         return false;
     }
 
-    public boolean finalizarTarea(Tareas tarea){
-        for (Tareas t : tareas){
-            if (t.equals(tarea)) {
-                t.estado = true;
-                return true;
-            }
-        }
-        return false;
+
+
+
+    public List<Personas> ListarPersonas(){
+        return personas;
     }
-    public boolean introducirEliminarPersona(String opcion, Personas persona){
-        if(opcion == null)
-            return false;
-        if(!personas.contains(persona)){
 
-        }
-        opcion = opcion.toUpperCase();
+    public List<Tareas> listarTareas(){
+        return tareas;
+    }
 
-        if (opcion.equals("ELIMINAR")){
 
-        }else if (opcion.equals("INTRODUCIR")){
-
-        }
-        return false;
-        }
     }

@@ -16,4 +16,10 @@ public class Resultado {
 
     }
 
+    public String toString(){
+
+        return "ID :" + id;
+
+    }
+
 }
