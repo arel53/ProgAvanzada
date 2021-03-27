@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Menu{
 
-    public static void main(String[] args){
+    public static void ejecutarMenu(){
         Scanner sn = new Scanner(System.in);
 
         boolean salir = false;
