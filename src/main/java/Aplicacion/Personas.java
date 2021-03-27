@@ -1,5 +1,6 @@
 package Aplicacion;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Personas {
@@ -9,10 +10,10 @@ public class Personas {
     public List<Tareas> tareas;
 
 
-    public Personas(String nombre, String correo, List<Tareas> tareas){
+    public Personas(String nombre, String correo){
         this.nombre = nombre;
         this.correo = correo;
-        this.tareas = tareas;
+        this.tareas = new ArrayList<>();
 
 
     }

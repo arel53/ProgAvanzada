@@ -13,36 +13,35 @@ public class Proyecto {
     public Proyecto(String nombre){
         this.nombre = nombre;
         this.personas = new ArrayList<>();
-    }
-    public Proyecto(){
-
+        this.tareas = new ArrayList<>();
     }
 
+    public String toString(){
+        return "Proyecto --> " + nombre;
+    }
 
-    public String altaPersona(Personas persona){
-            personas.add(persona);
-            return "Se ha añadido la persona";
+    public Proyecto iniciarProyecto(String nombre){
+        return new Proyecto(nombre);
+    }
+
+    public boolean altaPersona(Personas persona){
+        return personas.add(persona);
     }
 
 
     public boolean altaTarea(Tareas tarea){
-        if(!tareas.contains(tarea)) {
-            tareas.add(tarea);
-            return true;
-        }
-        return false;
+            return tareas.add(tarea);
     }
 
 
 
 
-    public List<Personas> ListarPersonas(){
+    public List<Personas> listarPersonas(){
         return personas;
     }
 
     public List<Tareas> listarTareas(){
         return tareas;
     }
-
 
     }
