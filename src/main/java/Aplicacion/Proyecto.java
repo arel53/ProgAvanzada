@@ -20,20 +20,17 @@ public class Proyecto {
         return "Proyecto --> " + nombre;
     }
 
-    public Proyecto iniciarProyecto(String nombre){
+    public static Proyecto iniciarProyecto(String nombre){
         return new Proyecto(nombre);
     }
 
-    public boolean altaPersona(Personas persona){
-        return personas.add(persona);
+    public void altaPersona(Personas persona){
+        personas.add(persona);
     }
-
 
     public boolean altaTarea(Tareas tarea){
             return tareas.add(tarea);
     }
-
-
 
 
     public List<Personas> listarPersonas(){
@@ -42,6 +39,17 @@ public class Proyecto {
 
     public List<Tareas> listarTareas(){
         return tareas;
+    }
+
+    public Personas getPersona(String persona){
+
+        for (Personas p : personas){
+            if (p.nombre.equals(persona)){
+                return p;
+            }
+        }
+
+        return new Personas();
     }
 
     }

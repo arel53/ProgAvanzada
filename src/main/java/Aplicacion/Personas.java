@@ -1,5 +1,6 @@
 package Aplicacion;
 
+import javax.naming.NamingEnumeration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,9 +19,24 @@ public class Personas {
 
     }
 
+    public Personas(){
+        tareas = new ArrayList<>();
+    }
+
     public String toString(){
         return "Nombre :"+ nombre;
     }
+
+
+    public static Personas createPersona(String nombre, String correo){
+        return new Personas(nombre,correo);
+    }
+
+    public void addPersonaTareas(Tareas tarea){
+        this.tareas.add(tarea);
+    }
+
+
 
 
 

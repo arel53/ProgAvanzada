@@ -1,5 +1,7 @@
 package Aplicacion;
 
+import java.util.Calendar;
+
 public class Fecha {
     int dia;
     int mes;
@@ -11,9 +13,17 @@ public class Fecha {
         this.año = año;
     }
 
+    public Fecha(){}
+
 
     public String toString(){
         return dia + "/" + mes + "/" + año;
     }
+
+    public static Fecha fechaActual(){
+        return new Fecha(Calendar.DATE, Calendar.MONTH, Calendar.YEAR);
+    }
+
+
 
 }

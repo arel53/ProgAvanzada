@@ -2,7 +2,7 @@ package Aplicacion;
 
 import java.util.List;
 
-public class Participantes extends Tareas{
+public class Participantes{
 
     List<Personas> personas;
     Personas responsable;
