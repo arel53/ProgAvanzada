@@ -1,8 +1,6 @@
 package Aplicacion.EjecutarMétodos;
 
-import Aplicacion.Proyecto;
-
-import java.util.Scanner;
+import Aplicacion.Proyecto.Proyecto;
 
 public class ListarTareasProyecto {
 

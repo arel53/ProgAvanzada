@@ -1,28 +1,29 @@
-package Aplicacion;
+package Aplicacion.Persona;
 
-import javax.naming.NamingEnumeration;
-import java.util.ArrayList;
-import java.util.List;
+import Aplicacion.Tareas.Tareas;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class Personas {
 
     public String dni;
     public String nombre;
     public String correo;
-    public List<Tareas> tareas;
+    public Set<Tareas> tareas;
 
 
     public Personas(String dni,String nombre, String correo){
         this.dni = dni;
         this.nombre = nombre;
         this.correo = correo;
-        this.tareas = new ArrayList<>();
+        this.tareas = new HashSet<>();
 
 
     }
 
     public Personas(){
-        tareas = new ArrayList<>();
+        tareas = new HashSet<>();
     }
 
     public String toString(){

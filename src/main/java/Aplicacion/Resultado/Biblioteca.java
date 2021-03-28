@@ -1,8 +1,7 @@
-package Aplicacion;
+package Aplicacion.Resultado;
 
 
-
-public class Biblioteca extends Programa{
+public class Biblioteca extends Programa {
 
     public Biblioteca(String id, double horas, String tipo, String lenguaje, int lineas, int modulos){
         this.id = id;

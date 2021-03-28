@@ -1,22 +1,21 @@
 package Aplicacion.EjecutarMétodos;
 
-import Aplicacion.Fecha;
-import Aplicacion.Personas;
-import Aplicacion.Proyecto;
-import Aplicacion.Tareas;
-
-import java.util.ArrayList;
-import java.util.List;
+import Aplicacion.Fecha.Fecha;
+import Aplicacion.Persona.Personas;
+import Aplicacion.Proyecto.Proyecto;
+import Aplicacion.Tareas.Tareas;
+;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class AltaTareas {
 
 
     public static void ejecutaAltaTareas(Scanner sn, Proyecto proyecto) {
 
-        List<Tareas> tareas = new ArrayList<>();
-        List<Personas> personas = new ArrayList<>();
-        List<String> etiquetas = new ArrayList<>();
+        Set<Personas> personas = new HashSet<>();
+        Set<String> etiquetas = new HashSet<>();
 
         System.out.format("\nVas a introducir la tarea :");
 

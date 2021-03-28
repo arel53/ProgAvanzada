@@ -1,4 +1,6 @@
-package Aplicacion;
+package Aplicacion.Resultado;
+
+import Aplicacion.Resultado.Resultado;
 
 public class Documentacion extends Resultado {
     String format;

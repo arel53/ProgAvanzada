@@ -1,8 +1,8 @@
 package Aplicacion.EjecutarMétodos;
 
-import Aplicacion.Personas;
-import Aplicacion.Proyecto;
-import Aplicacion.Tareas;
+import Aplicacion.Persona.Personas;
+import Aplicacion.Proyecto.Proyecto;
+import Aplicacion.Tareas.Tareas;
 
 import java.util.Scanner;
 

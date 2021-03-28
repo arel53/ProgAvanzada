@@ -1,4 +1,4 @@
-package Aplicacion;
+package Aplicacion.Resultado;
 
 public class Resultado {
 

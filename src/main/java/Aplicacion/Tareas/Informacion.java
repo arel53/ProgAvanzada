@@ -1,6 +1,6 @@
-package Aplicacion;
+package Aplicacion.Tareas;
 
-import java.util.List;
+import java.util.Set;
 
 public class Informacion {
 
@@ -8,11 +8,11 @@ public class Informacion {
     String descripcion;
     String resultado;
     boolean finalizado;
-    List<String> etiquetas;
+    Set<String> etiquetas;
     int prioridad;
 
 
-    public Informacion(String titulo, String descripcion, String resultado, List<String> etiquetas, int prioridad){
+    public Informacion(String titulo, String descripcion, String resultado, Set<String> etiquetas, int prioridad){
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.finalizado = false;

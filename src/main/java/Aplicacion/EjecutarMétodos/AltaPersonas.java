@@ -1,11 +1,8 @@
 package Aplicacion.EjecutarMétodos;
 
-import Aplicacion.Personas;
-import Aplicacion.Proyecto;
-import Aplicacion.Tareas;
+import Aplicacion.Persona.Personas;
+import Aplicacion.Proyecto.Proyecto;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class AltaPersonas {

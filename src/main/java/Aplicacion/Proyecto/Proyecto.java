@@ -1,19 +1,21 @@
-package Aplicacion;
+package Aplicacion.Proyecto;
 
-import javax.swing.plaf.TreeUI;
-import java.util.ArrayList;
-import java.util.List;
+import Aplicacion.Persona.Personas;
+import Aplicacion.Tareas.Tareas;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class Proyecto {
 
     String nombre;
-    List<Personas> personas;
-    List<Tareas> tareas;
+    Set<Personas> personas;
+    Set<Tareas> tareas;
 
     public Proyecto(String nombre){
         this.nombre = nombre;
-        this.personas = new ArrayList<>();
-        this.tareas = new ArrayList<>();
+        this.personas = new HashSet<>();
+        this.tareas = new HashSet<>();
     }
 
     public String toString(){
@@ -33,11 +35,11 @@ public class Proyecto {
     }
 
 
-    public List<Personas> listarPersonas(){
+    public Set<Personas> listarPersonas(){
         return personas;
     }
 
-    public List<Tareas> listarTareas(){
+    public Set<Tareas> listarTareas(){
         return tareas;
     }
 

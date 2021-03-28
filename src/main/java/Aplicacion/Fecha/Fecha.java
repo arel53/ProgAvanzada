@@ -1,7 +1,6 @@
-package Aplicacion;
+package Aplicacion.Fecha;
 
 import java.time.LocalDate;
-import java.util.Calendar;
 
 public class Fecha {
     int dia;

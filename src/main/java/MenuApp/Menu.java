@@ -1,9 +1,8 @@
 package MenuApp;
 
 import Aplicacion.EjecutarMétodos.*;
-import Aplicacion.Proyecto;
+import Aplicacion.Proyecto.Proyecto;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 public class Menu{

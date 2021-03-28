@@ -1,7 +1,7 @@
 package Aplicacion.EjecutarMétodos;
 
-import Aplicacion.Proyecto;
-import Aplicacion.Tareas;
+import Aplicacion.Proyecto.Proyecto;
+import Aplicacion.Tareas.Tareas;
 
 import java.util.Scanner;
 
