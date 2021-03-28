@@ -1,9 +1,9 @@
 package MenuApp;
 
-import Aplicacion.EjecutarMétodos.AltaPersonas;
-import Aplicacion.EjecutarMétodos.AltaTareas;
+import Aplicacion.EjecutarMétodos.*;
 import Aplicacion.Proyecto;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu{
@@ -38,25 +38,29 @@ public class Menu{
                         AltaTareas.ejecutaAltaTareas(sn,proyecto);
                         break;
                     case FINALIZAR_TAREA:
-                        System.out.format("\nLa opción elegida es la 3");
+                        System.out.format("\nLa opción elegida es la 3\n");
+                        FinalizarTarea.ejecutarFinalizarTarea(sn,proyecto);
                         break;
                     case INTRODUCIR_PERSONA_TAREA:
-                        System.out.format("\nLa opción elegida es la 4");
+                        System.out.format("\nLa opción elegida es la 4\n");
+                        IntroducirPersonaTarea.ejectaIntroducirPersonaTarea(sn,proyecto);
                         break;
                     case ELIMINAR_PERSONA_TAREA:
-                        System.out.format("\nLa opción elegida es la 5");
+                        System.out.format("\nLa opción elegida es la 5\n");
+                        EliminarPersonaTarea.ejecutaEliminarPersonaTarea(sn,proyecto);
                         break;
                     case LISTAR_PERSONAS_PROYECTO:
-                        System.out.format("\nLa opción elegida es la 6");
+                        System.out.format("\nLa opción elegida es la 6\n");
+                        ListarPersonasProyecto.ejecutaListarPersonasProyecto(proyecto);
                         break;
                     case LISTAR_TAREAS_PROYECTO:
-                        System.out.format("\nLa opción elegida es la 7");
-                        System.out.format("\nVas a salir del menú\n");
-                        salir = true;
+                        System.out.format("\nLa opción elegida es la 7\n");
+                        ListarTareasProyecto.ejecutaListarTareasProyecto(proyecto);
                         break;
 
                     case SALIR:
                         salir = true;
+                        System.out.format("\nVas a salir del menú\n");
                         break;
 
 

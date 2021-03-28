@@ -13,5 +13,6 @@ public class Participantes{
         this.responsable = responsable;
     }
 
-
+    public Participantes() {
+    }
 }

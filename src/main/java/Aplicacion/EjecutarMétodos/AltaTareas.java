@@ -13,7 +13,7 @@ public class AltaTareas {
 
 
     public static void ejecutaAltaTareas(Scanner sn, Proyecto proyecto) {
-        int contador = 1;
+
         List<Tareas> tareas = new ArrayList<>();
         List<Personas> personas = new ArrayList<>();
         List<String> etiquetas = new ArrayList<>();
@@ -24,19 +24,19 @@ public class AltaTareas {
         String titulo = sn.next();
         System.out.format("\nIntroduce la descripción --> ");
         String descrip = sn.next();
-        System.out.format("Vas a introducir las personas que realizan esta tarea (si has terminado introduce la letra q) \n");
+        System.out.format("Vas a introducir las personas que realizan esta tarea (si has terminado introduce la letra q): \n");
 
+        int contador = 1;
         while (true) {
 
-            System.out.format("La persona se llama --> ");
-            String persona = sn.next();
-            if (persona.equals("q"))
+            System.out.format("El dni de la persona nº(" + (contador++) + ") es --> ");
+            String dni = sn.next();
+            if (dni.equals("q"))
                 break;
-            personas.add(proyecto.getPersona(persona));
-
+            personas.add(proyecto.getPersona(dni));
         }
 
-        System.out.format("\nIntroduce la persona responsable --> ");
+        System.out.format("\nIntroduce el DNI de la persona responsable --> ");
 
         Personas personaResponsable = proyecto.getPersona(sn.next());
 
@@ -52,23 +52,21 @@ public class AltaTareas {
 
         String resultado = sn.next();
 
+        System.out.format("Indica la etiqueta que quieres añadir (q si has terminado) --> ");
+
+        contador = 1;
         while (true) {
-            System.out.format("Indica la etiqueta que quieres añadir (q si has terminado) --> ");
+            System.out.format("Etiqueta nº(" + (contador++) + ") --> ");
             String etiqueta = sn.next();
             if(etiqueta.equals("q"))
                 break;
             etiquetas.add(etiqueta);
         }
 
-        proyecto.altaTarea(Tareas.createTarea(titulo,descrip,personas,personaResponsable,prioridad,fechaCreacion,finalizacion,resultado,etiquetas));
-
+        Tareas tarea = Tareas.createTarea(titulo,descrip,personas,personaResponsable,prioridad,fechaCreacion,finalizacion,resultado,etiquetas);
+        proyecto.altaTarea(tarea);
+        personaResponsable.addPersonaTareas(tarea);
         System.out.format("\n");
-
-
-
-
-
-
 
     }
 }

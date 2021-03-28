@@ -1,5 +1,6 @@
 package Aplicacion;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 
 public class Fecha {
@@ -21,7 +22,7 @@ public class Fecha {
     }
 
     public static Fecha fechaActual(){
-        return new Fecha(Calendar.DATE, Calendar.MONTH, Calendar.YEAR);
+        return new Fecha(LocalDate.now().getDayOfMonth(), LocalDate.now().getMonthValue(), LocalDate.now().getYear());
     }
 
 

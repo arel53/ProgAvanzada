@@ -41,10 +41,10 @@ public class Proyecto {
         return tareas;
     }
 
-    public Personas getPersona(String persona){
+    public Personas getPersona(String dni){
 
         for (Personas p : personas){
-            if (p.nombre.equals(persona)){
+            if (p.getDni().equals(dni.toUpperCase())){
                 return p;
             }
         }
@@ -52,4 +52,19 @@ public class Proyecto {
         return new Personas();
     }
 
+    public Tareas getTarea(String tarea){
+
+        for (Tareas t : tareas){
+            if (t.getTitulo().equals(tarea.toLowerCase()))
+                return t;
+        }
+        return new Tareas();
     }
+
+    public String getNombre(){
+        return nombre;
+    }
+
+}
+
+

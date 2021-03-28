@@ -6,12 +6,14 @@ import java.util.List;
 
 public class Personas {
 
+    public String dni;
     public String nombre;
     public String correo;
     public List<Tareas> tareas;
 
 
-    public Personas(String nombre, String correo){
+    public Personas(String dni,String nombre, String correo){
+        this.dni = dni;
         this.nombre = nombre;
         this.correo = correo;
         this.tareas = new ArrayList<>();
@@ -24,18 +26,29 @@ public class Personas {
     }
 
     public String toString(){
-        return "Nombre :"+ nombre;
+        return "Dni --> " + dni +" Nombre --> "+ nombre;
     }
 
 
-    public static Personas createPersona(String nombre, String correo){
-        return new Personas(nombre,correo);
+    public static Personas createPersona(String dni,String nombre, String correo){
+        return new Personas(dni.toUpperCase(),nombre,correo);
     }
 
     public void addPersonaTareas(Tareas tarea){
         this.tareas.add(tarea);
     }
 
+    public String getNombre(){
+        return nombre;
+    }
+
+    public String getDni(){
+        return dni;
+    }
+
+    public String getCorreo(){
+        return correo;
+    }
 
 
 

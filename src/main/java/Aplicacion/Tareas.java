@@ -3,18 +3,25 @@ package Aplicacion;
 import java.util.List;
 
 public class Tareas {
-    Información información;
+    Informacion informacion;
     Fecha creacion;
     Fecha finalizacion;
     Participantes participantes;
 
     public Tareas(String titulo,String descripcion,List<Personas> personas,Personas responsable, int prioridad,String resultado, List<String> etiquetas){
 
-        this.información = new Información(titulo, descripcion,resultado,etiquetas,prioridad);
+        this.informacion = new Informacion(titulo, descripcion,resultado,etiquetas,prioridad);
         this.participantes = new Participantes(personas,responsable);
-        creacion = new Fecha();
+        creacion = Fecha.fechaActual();
         finalizacion = new Fecha();
 
+    }
+
+    public Tareas(){
+        informacion = new Informacion();
+        participantes = new Participantes();
+        creacion = new Fecha();
+        finalizacion = new Fecha();
     }
 
 
@@ -32,15 +39,64 @@ public class Tareas {
 
 
     public String  finalizarTarea(){
-        información.finalizado = true;
-        return "La tarea" + información.titulo + "se ha marcado como finalizada";
+        informacion.finalizado = true;
+        this.finalizacion = Fecha.fechaActual();
+        return "La tarea " + informacion.titulo + " se ha marcado como finalizada";
     }
 
-    public String toStringLista(){
-        return "Título :" + información.titulo + "Personas : "+ participantes.personas + "¿Finalizada? :" + información.finalizado + "Resultado: " + información.resultado;
+    public String toString(){
+        return "Título :" + getTitulo() + "Personas : "+ getPersonas() + "\nResponsable :"+getResponsable() +"\n¿Finalizada?: " + getFinalizado() + "\nResultado: " + getResultado() + "\nFecha creación: "+ getCreacion() + "\nFecha finalización: " + getFinalizacion();
     }
 
     public static Tareas createTarea(String titulo,String descripcion,List<Personas> personas,Personas responsable, int prioridad, Fecha creacion, Fecha finalizacion,String resultado, List<String> etiquetas){
-        return new Tareas(titulo,descripcion,personas,responsable,prioridad,resultado,etiquetas);
+        return new Tareas(titulo.toLowerCase(),descripcion,personas,responsable,prioridad,resultado,etiquetas);
+    }
+
+    public String getTitulo(){
+        return informacion.titulo;
+    }
+
+    public String getDescripcion() {
+        return informacion.descripcion;
+    }
+
+    public String getResultado() {
+        return informacion.resultado;
+    }
+
+    public boolean isFinalizado() {
+        return informacion.finalizado;
+    }
+
+    public List<String> getEtiquetas() {
+        return informacion.etiquetas;
+    }
+
+    public int getPrioridad() {
+        return informacion.prioridad;
+    }
+
+
+    public List<Personas> getPersonas() {
+        return participantes.personas;
+    }
+
+    public Personas getResponsable() {
+        return participantes.responsable;
+    }
+
+    public Fecha getCreacion() {
+        return creacion;
+    }
+
+    public Fecha getFinalizacion() {
+        return finalizacion;
+    }
+
+    public String getFinalizado(){
+        if (informacion.finalizado)
+            return "Finalizado";
+        else
+            return "No finalizado";
     }
 }
