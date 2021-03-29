@@ -18,7 +18,7 @@ public class Personas {
         this.dni = dni;
         this.nombre = nombre;
         this.correo = correo;
-        this.tareas = new HashSet<>();
+        this.tareas = new LinkedHashSet<>();
 
 
     }
