@@ -23,12 +23,12 @@ public class AltaTareas {
         String titulo = sn.next();
         System.out.format("\nIntroduce la descripción --> ");
         String descrip = sn.next();
-        System.out.format("Vas a introducir las personas que realizan esta tarea (si has terminado introduce la letra q): \n");
+        System.out.format("\nVas a introducir las personas que realizan esta tarea (si has terminado introduce la letra q): \n");
 
         int contador = 1;
         while (true) {
 
-            System.out.format("El dni de la persona nº(" + (contador++) + ") es --> ");
+            System.out.format("\nEl dni de la persona nº(" + (contador++) + ") es --> ");
             String dni = sn.next();
             if (dni.equals("q"))
                 break;
@@ -47,15 +47,15 @@ public class AltaTareas {
 
         Fecha finalizacion = new Fecha();
 
-        System.out.format("Indica el resultado esperado --> ");
+        System.out.format("\nIndica el resultado esperado --> ");
 
         String resultado = sn.next();
 
-        System.out.format("Indica la etiqueta que quieres añadir (q si has terminado) --> ");
+        System.out.format("\nIndica la etiqueta que quieres añadir (q si has terminado) --> ");
 
         contador = 1;
         while (true) {
-            System.out.format("Etiqueta nº(" + (contador++) + ") --> ");
+            System.out.format("\nEtiqueta nº(" + (contador++) + ") --> ");
             String etiqueta = sn.next();
             if(etiqueta.equals("q"))
                 break;

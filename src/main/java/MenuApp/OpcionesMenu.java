@@ -4,9 +4,10 @@ public enum OpcionesMenu {
 
 
     ALTA_PERSONAS("Dar de alta a las personas que trabajan en el proyecto."),
+    BAJA_PERSONA_PROYECTO("Eliminar persona del proyecto."),
     ALTA_TAREA("Dar de alta tareas."),
     FINALIZAR_TAREA("Marcar tarea como finalizada."),
-    INTRODUCIR_PERSONA_TAREA("Introducir una persona de una tarea."),
+    INTRODUCIR_PERSONA_TAREA("Introducir una persona a una tarea."),
     ELIMINAR_PERSONA_TAREA("Eliminar una persona de una tarea."),
     LISTAR_PERSONAS_PROYECTO("Listar las personas asignadas a un proyecto."),
     LISTAR_TAREAS_PROYECTO("Listar las tareas de un proyecto."),

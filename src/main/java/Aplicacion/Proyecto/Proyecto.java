@@ -3,7 +3,7 @@ package Aplicacion.Proyecto;
 import Aplicacion.Persona.Personas;
 import Aplicacion.Tareas.Tareas;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Proyecto {
@@ -14,8 +14,13 @@ public class Proyecto {
 
     public Proyecto(String nombre){
         this.nombre = nombre;
-        this.personas = new HashSet<>();
-        this.tareas = new HashSet<>();
+        this.personas = new LinkedHashSet<>();
+        this.tareas = new LinkedHashSet<>();
+    }
+
+    public Proyecto(){
+        personas = new LinkedHashSet<>();
+        tareas = new LinkedHashSet<>();
     }
 
     public String toString(){
@@ -65,6 +70,11 @@ public class Proyecto {
 
     public String getNombre(){
         return nombre;
+    }
+
+
+    public void bajaPersona(Personas persona){
+        personas.remove(persona);
     }
 
 }

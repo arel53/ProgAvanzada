@@ -20,6 +20,7 @@ public class FinalizarTarea {
         Tareas tarea = proyecto.getTarea(titulo);
 
         System.out.println(tarea.finalizarTarea());
+        System.out.format("\n");
 
     }
 }

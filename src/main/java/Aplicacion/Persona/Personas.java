@@ -3,6 +3,7 @@ package Aplicacion.Persona;
 import Aplicacion.Tareas.Tareas;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Personas {

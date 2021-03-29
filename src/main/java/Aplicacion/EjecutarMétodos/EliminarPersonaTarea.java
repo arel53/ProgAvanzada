@@ -24,5 +24,6 @@ public class EliminarPersonaTarea {
         Personas persona = proyecto.getPersona(dni);
 
         System.out.println(tarea.eliminarPersonaTarea(persona));
+        System.out.format("\n");
     }
 }

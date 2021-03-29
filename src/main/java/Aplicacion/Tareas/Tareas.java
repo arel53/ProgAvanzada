@@ -48,7 +48,7 @@ public class Tareas {
     }
 
     public String toString(){
-        return "Título :" + getTitulo() + "Personas : "+ getPersonas() + "\nResponsable :"+getResponsable() +"\n¿Finalizada?: " + getFinalizado() + "\nResultado: " + getResultado() + "\nFecha creación: "+ getCreacion() + "\nFecha finalización: " + getFinalizacion();
+        return "Título :" + getTitulo() + "\nPersonas : "+ getPersonas() + "\nResponsable :"+getResponsable() +"\n¿Finalizada?: " + getFinalizado() + "\nResultado: " + getResultado() + "\nFecha creación: "+ getCreacion() + "\nFecha finalización: " + getFechaFinalizacion()+ "\n\n";
     }
 
     public static Tareas createTarea(String titulo,String descripcion,Set<Personas> personas,Personas responsable, int prioridad, Fecha creacion, Fecha finalizacion,String resultado, Set<String> etiquetas){
@@ -92,7 +92,7 @@ public class Tareas {
         return creacion;
     }
 
-    public Fecha getFinalizacion() {
+    public Fecha getFechaFinalizacion() {
         return finalizacion;
     }
 

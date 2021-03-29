@@ -11,7 +11,7 @@ public class IntroducirPersonaTarea {
     public static void ejectaIntroducirPersonaTarea(Scanner sn , Proyecto proyecto){
 
 
-        System.out.format("Introduce el título de la tarea --> ");
+        System.out.format("\nIntroduce el título de la tarea --> ");
 
 
         String titulo = sn.next();
@@ -25,6 +25,7 @@ public class IntroducirPersonaTarea {
         Personas persona = proyecto.getPersona(dni);
 
         System.out.println(tarea.introducirPersonaTarea(persona));
+        System.out.format("\n");
 
 
     }

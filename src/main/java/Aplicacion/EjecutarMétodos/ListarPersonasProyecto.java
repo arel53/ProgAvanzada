@@ -6,9 +6,10 @@ public class ListarPersonasProyecto {
 
     public static void ejecutaListarPersonasProyecto(Proyecto proyecto){
 
-        System.out.println("Esta es la lista de personas");
+        System.out.println("\nEsta es la lista de personas");
 
         System.out.println(proyecto.listarPersonas());
+        System.out.format("\n");
 
     }
 }
