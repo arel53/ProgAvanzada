@@ -72,7 +72,7 @@ public class Proyecto {
         return nombre;
     }
 
-
+    // TODO: No se pueden dar de baja las personas
     public void bajaPersona(Personas persona){
         personas.remove(persona);
     }

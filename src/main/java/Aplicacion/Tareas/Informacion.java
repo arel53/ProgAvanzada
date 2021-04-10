@@ -6,6 +6,7 @@ public class Informacion {
 
     String titulo;
     String descripcion;
+    // TODO: el resultado tiene que ser de la clase Resultado, no una cadena
     String resultado;
     boolean finalizado;
     Set<String> etiquetas;

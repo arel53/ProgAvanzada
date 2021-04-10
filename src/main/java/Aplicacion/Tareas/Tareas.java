@@ -96,6 +96,7 @@ public class Tareas {
         return finalizacion;
     }
 
+    // TODO: Es mejor que devuelva el booleano que una cadena
     public String getFinalizado(){
         if (informacion.finalizado)
             return "Finalizado";

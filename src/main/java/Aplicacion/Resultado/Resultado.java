@@ -1,5 +1,6 @@
 package Aplicacion.Resultado;
 
+// TODO: Resultado debería ser una clase abstracta
 public class Resultado {
 
     String id;
