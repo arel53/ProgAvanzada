@@ -3,8 +3,8 @@ package Aplicacion.EjecutarMétodos;
 import Aplicacion.Fecha.Fecha;
 import Aplicacion.Persona.Personas;
 import Aplicacion.Proyecto.Proyecto;
+import Aplicacion.Resultado.*;
 import Aplicacion.Tareas.Tareas;
-;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -20,9 +20,9 @@ public class AltaTareas {
         System.out.format("\nVas a introducir la tarea :");
 
         System.out.format("Introduce el título --> ");
-        String titulo = sn.next();
+        String titulo = sn.nextLine();
         System.out.format("\nIntroduce la descripción --> ");
-        String descrip = sn.next();
+        String descrip = sn.nextLine();
         System.out.format("\nVas a introducir las personas que realizan esta tarea (si has terminado introduce la letra q): \n");
 
         int contador = 1;
@@ -43,15 +43,23 @@ public class AltaTareas {
 
         int prioridad = sn.nextInt();
 
-        Fecha fechaCreacion = Fecha.fechaActual();
+        System.out.format("\nIndica el resultado esperado \n 1. --> ");
+        System.out.format("\nIndica el resultado esperado \n1. Documentación\n2. Programa\n3. Biblioteca\n4. Pag. Web--> ");
 
-        Fecha finalizacion = new Fecha();
+        int opcion = sn.nextInt();
+        Resultado resultado;
+        if (opcion == 1)
+            resultado = new Documentacion();
+        else if (opcion == 2)
+            resultado = new Programa();
 
-        System.out.format("\nIndica el resultado esperado --> ");
-
-        String resultado = sn.next();
+        else if (opcion == 3)
+            resultado = new Biblioteca();
+        else
+            resultado = new PagWeb();
 
         System.out.format("\nIndica la etiqueta que quieres añadir (q si has terminado) --> ");
+        sn.nextLine();
 
         contador = 1;
         while (true) {
@@ -62,9 +70,10 @@ public class AltaTareas {
             etiquetas.add(etiqueta);
         }
 
-        Tareas tarea = Tareas.createTarea(titulo,descrip,personas,personaResponsable,prioridad,fechaCreacion,finalizacion,resultado,etiquetas);
+        Tareas tarea = Tareas.createTarea(titulo,descrip,personas,personaResponsable,prioridad,resultado,etiquetas);
         proyecto.altaTarea(tarea);
         personaResponsable.addPersonaTareas(tarea);
+        sn.nextLine();
         System.out.format("\n");
 
     }
