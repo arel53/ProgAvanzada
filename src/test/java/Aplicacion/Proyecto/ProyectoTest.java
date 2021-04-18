@@ -1,9 +1,9 @@
 package Aplicacion.Proyecto;
 
-
-import Aplicacion.Fecha.Fecha;
 import Aplicacion.Persona.Personas;
+import Aplicacion.Resultado.Programa;
 import Aplicacion.Tareas.Tareas;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -14,17 +14,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProyectoTest {
 
     // TODO: deberíais usar la anotación @BeforeEach para construir el proyecto cada vez
-    Proyecto constructor(){
-        return new Proyecto();
+Proyecto proyecto;
+
+    @BeforeEach
+    void preparaProyecto(){
+        proyecto = new Proyecto();
     }
 
     @org.junit.jupiter.api.Test
     void listarPersonas() {
 
-        Proyecto proyecto = constructor();
         // TODO: mejor usar isEmpty para comprobar si están vacías
-        assertEquals(proyecto.listarPersonas(), new LinkedHashSet<>());
-        assertEquals(new LinkedHashSet<>(), proyecto.listarTareas());
+        assertTrue(proyecto.listarPersonas().isEmpty());
+        assertTrue(proyecto.listarTareas().isEmpty());
 
     }
 
@@ -33,10 +35,9 @@ class ProyectoTest {
 
     @Test
     void altaPersona() {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10000000; i++) {
             // TODO: no tiene sentido crear un nuevo proyecto en cada vuelta, así
             //       es siempre la misma prueba: añadir un elemento a un proyecto vacío
-            Proyecto proyecto = constructor();
             Personas add = new Personas(Integer.toString(i), "", "");
             proyecto.altaPersona(add);
             Personas comparar = proyecto.getPersona(add.getDni());
@@ -48,49 +49,14 @@ class ProyectoTest {
 
 
     }
-    @Test
-    void bajaPersona(){
-
-
-        Proyecto proyecto = constructor();
-        for (int i = 0; i < 10; i++) {
-            Personas add = new Personas(Integer.toString(i), "", "");
-            proyecto.altaPersona(add);
-
-        }
-        // TODO: Los tests unitarios no deben escribir por pantalla
-        System.out.println(proyecto.listarPersonas());
-
-        for (int i = 0; i < 10; i++){
-
-            Personas eliminar = proyecto.getPersona(Integer.toString(i));
-
-            proyecto.bajaPersona(eliminar);
-            // TODO: Los tests unitarios no deben escribir por pantalla
-            System.out.println(proyecto.listarPersonas());
-            Personas comparar = proyecto.getPersona(Integer.toString(i));
-
-            // TODO: Los tests unitarios no deben escribir por pantalla
-            System.out.println(comparar);
-
-            assertNotEquals(eliminar, comparar);
-
-        }
-
-
-
-    }
 
     @Test
     void listarTareas() {
 
-        Proyecto proyecto = constructor();
-
         for (int i = 0; i < 100; i++) {
             // TODO: otra vez no tiene sentido crear un nuevo proyecto en cada vuelta
-            proyecto = constructor();
             Personas add = new Personas(Integer.toString(i), "", "");
-            Tareas tarea = new Tareas(Integer.toString(i), "", new LinkedHashSet<Personas>(), add, 1, "", new LinkedHashSet<String>());
+            Tareas tarea = new Tareas(Integer.toString(i), "", new LinkedHashSet<>(), add, 1, new Programa(), new LinkedHashSet<>());
             proyecto.altaPersona(add);
             proyecto.altaTarea(tarea);
         }
@@ -102,8 +68,8 @@ class ProyectoTest {
 
             encontrarEstado.finalizarTarea();
 
-            String estadoFinalizado = encontrarEstado.getFinalizado();
-            assertEquals(estadoFinalizado, "Finalizado");
+            boolean estadoFinalizado = encontrarEstado.getFinalizado();
+            assertTrue(estadoFinalizado);
 
 
 

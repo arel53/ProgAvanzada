@@ -2,6 +2,7 @@ package Aplicacion.Tareas;
 
 import Aplicacion.Fecha.Fecha;
 import Aplicacion.Persona.Personas;
+import Aplicacion.Resultado.Resultado;
 
 import java.util.Set;
 
@@ -11,7 +12,7 @@ public class Tareas {
     Fecha finalizacion;
     Participantes participantes;
 
-    public Tareas(String titulo, String descripcion, Set<Personas> personas, Personas responsable, int prioridad, String resultado, Set<String> etiquetas){
+    public Tareas(String titulo, String descripcion, Set<Personas> personas, Personas responsable, int prioridad, Resultado resultado, Set<String> etiquetas){
 
         this.informacion = new Informacion(titulo, descripcion,resultado,etiquetas,prioridad);
         this.participantes = new Participantes(personas,responsable);
@@ -51,7 +52,7 @@ public class Tareas {
         return "Título :" + getTitulo() + "\nPersonas : "+ getPersonas() + "\nResponsable :"+getResponsable() +"\n¿Finalizada?: " + getFinalizado() + "\nResultado: " + getResultado() + "\nFecha creación: "+ getCreacion() + "\nFecha finalización: " + getFechaFinalizacion()+ "\n\n";
     }
 
-    public static Tareas createTarea(String titulo,String descripcion,Set<Personas> personas,Personas responsable, int prioridad, Fecha creacion, Fecha finalizacion,String resultado, Set<String> etiquetas){
+    public static Tareas createTarea(String titulo,String descripcion,Set<Personas> personas,Personas responsable, int prioridad,Resultado resultado, Set<String> etiquetas){
         return new Tareas(titulo.toLowerCase(),descripcion,personas,responsable,prioridad,resultado,etiquetas);
     }
 
@@ -63,7 +64,7 @@ public class Tareas {
         return informacion.descripcion;
     }
 
-    public String getResultado() {
+    public Resultado getResultado() {
         return informacion.resultado;
     }
 
@@ -97,10 +98,7 @@ public class Tareas {
     }
 
     // TODO: Es mejor que devuelva el booleano que una cadena
-    public String getFinalizado(){
-        if (informacion.finalizado)
-            return "Finalizado";
-        else
-            return "No finalizado";
+    public boolean getFinalizado(){
+        return informacion.finalizado;
     }
 }

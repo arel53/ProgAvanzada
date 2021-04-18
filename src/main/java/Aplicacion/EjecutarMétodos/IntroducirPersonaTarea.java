@@ -14,7 +14,7 @@ public class IntroducirPersonaTarea {
         System.out.format("\nIntroduce el título de la tarea --> ");
 
 
-        String titulo = sn.next();
+        String titulo = sn.nextLine();
 
         Tareas tarea = proyecto.getTarea(titulo);
 

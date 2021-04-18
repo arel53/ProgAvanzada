@@ -16,12 +16,13 @@ public class AltaPersonas {
         System.out.format("\nIntroduce el DNI --> ");
         String dni = sn.next();
         System.out.format("\nIntroduce el nombre --> ");
-        String nombre = sn.next();
+        sn.nextLine();
+        String nombre = sn.nextLine();
         System.out.format("\nIntroduce el correo --> ");
         String correo = sn.next();
 
         proyecto.altaPersona(Personas.createPersona(dni,nombre,correo));
-
+        sn.nextLine();
         System.out.format("\n");
     }
 }

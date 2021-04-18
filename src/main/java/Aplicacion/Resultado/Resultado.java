@@ -1,7 +1,7 @@
 package Aplicacion.Resultado;
 
 // TODO: Resultado debería ser una clase abstracta
-public class Resultado {
+public abstract class Resultado {
 
     String id;
     double horas;

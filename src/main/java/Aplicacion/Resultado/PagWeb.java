@@ -14,4 +14,7 @@ public class PagWeb extends Resultado {
         this.backEnd = backEnd;
     }
 
+    public PagWeb() {
+
+    }
 }

@@ -15,7 +15,7 @@ public class FinalizarTarea {
         System.out.format("Vas a finalizar una tarea\n");
         System.out.format("Escribe el nombre de la tarea para finalizarla --> ");
 
-        String titulo = sn.next();
+        String titulo = sn.nextLine();
 
         Tareas tarea = proyecto.getTarea(titulo);
 

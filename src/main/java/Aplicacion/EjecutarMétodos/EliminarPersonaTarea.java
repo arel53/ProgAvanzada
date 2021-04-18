@@ -13,7 +13,7 @@ public class EliminarPersonaTarea {
         System.out.format("Introduce el título de la tarea --> ");
 
 
-        String titulo = sn.next();
+        String titulo = sn.nextLine();
 
         Tareas tarea = proyecto.getTarea(titulo);
 
@@ -24,6 +24,7 @@ public class EliminarPersonaTarea {
         Personas persona = proyecto.getPersona(dni);
 
         System.out.println(tarea.eliminarPersonaTarea(persona));
+        sn.nextLine();
         System.out.format("\n");
     }
 }
