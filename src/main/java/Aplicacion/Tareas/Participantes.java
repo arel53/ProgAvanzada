@@ -4,7 +4,7 @@ import Aplicacion.Persona.Personas;
 
 import java.util.Set;
 
-public class Participantes{
+public class Participantes implements Serializable {
 
     Set<Personas> personas;
     Personas responsable;

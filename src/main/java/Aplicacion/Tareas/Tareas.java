@@ -1,18 +1,20 @@
 package Aplicacion.Tareas;
 
 import Aplicacion.Fecha.Fecha;
+import Aplicacion.Listas.tieneLista;
 import Aplicacion.Persona.Personas;
 import Aplicacion.Resultado.Resultado;
 
-import java.util.Set;
+import java.util.List;
+import Aplicacion.Listas.tieneClave;
 
-public class Tareas {
+public class Tareas <E> implements tieneLista,tieneClave{
     Informacion informacion;
     Fecha creacion;
     Fecha finalizacion;
     Participantes participantes;
 
-    public Tareas(String titulo, String descripcion, Set<Personas> personas, Personas responsable, int prioridad, Resultado resultado, Set<String> etiquetas){
+    public Tareas(String titulo, String descripcion, List<Personas> personas, Personas responsable, int prioridad, Resultado resultado, List<String> etiquetas){
 
         this.informacion = new Informacion(titulo, descripcion,resultado,etiquetas,prioridad);
         this.participantes = new Participantes(personas,responsable);
@@ -49,16 +51,13 @@ public class Tareas {
     }
 
     public String toString(){
-        return "Título :" + getTitulo() + "\nPersonas : "+ getPersonas() + "\nResponsable :"+getResponsable() +"\n¿Finalizada?: " + getFinalizado() + "\nResultado: " + getResultado() + "\nFecha creación: "+ getCreacion() + "\nFecha finalización: " + getFechaFinalizacion()+ "\n\n";
+        return "Título :" + getClave() + "\nPersonas : "+ getPersonas() + "\nResponsable :"+getResponsable() +"\n¿Finalizada?: " + getFinalizado() + "\nResultado: " + getResultado() + "\nFecha creación: "+ getCreacion() + "\nFecha finalización: " + getFechaFinalizacion()+ "\n\n";
     }
 
-    public static Tareas createTarea(String titulo,String descripcion,Set<Personas> personas,Personas responsable, int prioridad,Resultado resultado, Set<String> etiquetas){
-        return new Tareas(titulo.toLowerCase(),descripcion,personas,responsable,prioridad,resultado,etiquetas);
+    public static Tareas<String> createTarea(String titulo, String descripcion, List<Personas> personas, Personas responsable, int prioridad, Resultado resultado, List<String> etiquetas){
+        return new Tareas<>(titulo.toLowerCase(),descripcion,personas,responsable,prioridad,resultado,etiquetas);
     }
 
-    public String getTitulo(){
-        return informacion.titulo;
-    }
 
     public String getDescripcion() {
         return informacion.descripcion;
@@ -72,7 +71,7 @@ public class Tareas {
         return informacion.finalizado;
     }
 
-    public Set<String> getEtiquetas() {
+    public List<String> getEtiquetas() {
         return informacion.etiquetas;
     }
 
@@ -81,7 +80,7 @@ public class Tareas {
     }
 
 
-    public Set<Personas> getPersonas() {
+    public List<Personas> getPersonas() {
         return participantes.personas;
     }
 
@@ -101,4 +100,17 @@ public class Tareas {
     public boolean getFinalizado(){
         return informacion.finalizado;
     }
+
+    @Override
+    public List getLista() {
+        return  participantes.personas;
+    }
+
+    @Override
+    public String getClave() {
+        return informacion.titulo;
+    }
+
+
+
 }

@@ -3,24 +3,28 @@ package Aplicacion.Proyecto;
 import Aplicacion.Persona.Personas;
 import Aplicacion.Tareas.Tareas;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+
+import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Locale;
+
 
 public class Proyecto {
 
     String nombre;
-    Set<Personas> personas;
-    Set<Tareas> tareas;
+    List<Personas> personas;
+    List<Tareas> tareas;
 
     public Proyecto(String nombre){
         this.nombre = nombre;
-        this.personas = new LinkedHashSet<>();
-        this.tareas = new LinkedHashSet<>();
+        this.personas = new LinkedList<>();
+        this.tareas = new LinkedList<>();
     }
 
     public Proyecto(){
-        personas = new LinkedHashSet<>();
-        tareas = new LinkedHashSet<>();
+        personas = new LinkedList<>();
+        tareas = new LinkedList<>();
     }
 
     public String toString(){
@@ -40,11 +44,11 @@ public class Proyecto {
     }
 
 
-    public Set<Personas> listarPersonas(){
+    public List<Personas> listarPersonas(){
         return personas;
     }
 
-    public Set<Tareas> listarTareas(){
+    public List<Tareas> listarTareas(){
         return tareas;
     }
 
@@ -62,10 +66,10 @@ public class Proyecto {
     public Tareas getTarea(String tarea){
 
         for (Tareas t : tareas){
-            if (t.getTitulo().equals(tarea.toLowerCase()))
+            if (t.getClave().equals(tarea))
                 return t;
         }
-        return new Tareas();
+        return null;
     }
 
     public String getNombre(){
@@ -74,5 +78,3 @@ public class Proyecto {
 
 
 }
-
-

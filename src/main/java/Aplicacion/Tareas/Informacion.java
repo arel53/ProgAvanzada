@@ -2,7 +2,7 @@ package Aplicacion.Tareas;
 
 import Aplicacion.Resultado.Resultado;
 
-import java.util.Set;
+import java.util.List;
 
 public class Informacion {
 
@@ -11,11 +11,11 @@ public class Informacion {
     // TODO: el resultado tiene que ser de la clase Resultado, no una cadena
     Resultado resultado;
     boolean finalizado;
-    Set<String> etiquetas;
+    List<String> etiquetas;
     int prioridad;
 
 
-    public Informacion(String titulo, String descripcion, Resultado resultado, Set<String> etiquetas, int prioridad){
+    public Informacion(String titulo, String descripcion, Resultado resultado, List<String> etiquetas, int prioridad){
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.finalizado = false;

@@ -1,30 +1,40 @@
 package Aplicacion.Persona;
 
 import Aplicacion.Tareas.Tareas;
+import Aplicacion.Listas.tieneLista;
+import Aplicacion.Listas.tieneClave;
 
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.io.Serializable;
+import java.util.*;
 
-public class Personas {
+public class Personas <E> implements tieneLista,tieneClave, Serializable {
 
     public String dni;
     public String nombre;
     public String correo;
-    public Set<Tareas> tareas;
+    public List<Tareas> tareas;
 
 
     public Personas(String dni,String nombre, String correo){
         this.dni = dni;
         this.nombre = nombre;
         this.correo = correo;
-        this.tareas = new LinkedHashSet<>();
+        this.tareas = new LinkedList<>();
+
+
+    }
+
+    public Personas(String dni,String nombre, String correo, List<Tareas> tareas){
+        this.dni = dni;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.tareas = tareas;
 
 
     }
 
     public Personas(){
-        tareas = new HashSet<>();
+        tareas = new LinkedList<>();
     }
 
     public String toString(){
@@ -44,16 +54,23 @@ public class Personas {
         return nombre;
     }
 
-    public String getDni(){
-        return dni;
-    }
 
     public String getCorreo(){
         return correo;
     }
 
+    public String getDni(){
+        return dni;
+    }
 
 
+    @Override
+    public List<Tareas> getLista() {
+        return tareas;
+    }
 
-
+    @Override
+    public String getClave() {
+        return dni;
+    }
 }

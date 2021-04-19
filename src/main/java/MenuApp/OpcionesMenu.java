@@ -10,6 +10,8 @@ public enum OpcionesMenu {
     ELIMINAR_PERSONA_TAREA("Eliminar una persona de una tarea."),
     LISTAR_PERSONAS_PROYECTO("Listar las personas asignadas a un proyecto."),
     LISTAR_TAREAS_PROYECTO("Listar las tareas de un proyecto."),
+    LISTAR_PERSONAS_NO_RESPONSABLES("Listar las personas que no son responsables"),
+    LISTAR_TAREAS_VACIAS("Listar las tareas sin personas asignadas"),
     SALIR("Cerrar menú.");
 
     String descrip;
