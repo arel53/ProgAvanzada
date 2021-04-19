@@ -5,6 +5,8 @@ import Aplicacion.Listas.UtilidadesParaListas;
 import Aplicacion.Persona.Personas;
 import Aplicacion.Proyecto.Proyecto;
 
+import java.io.Serializable;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class AltaPersonas {
@@ -19,7 +21,7 @@ public class AltaPersonas {
         System.out.format("\nIntroduce el DNI --> ");
 
 
-        String dni = sn.next();
+        String dni = sn.next().toUpperCase();
 
         System.out.format("\nIntroduce el nombre --> ");
         sn.nextLine();

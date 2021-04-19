@@ -1,5 +1,6 @@
 package Aplicacion.EjecutarMétodos;
 
+import Aplicacion.Excepcion.PersonaNoAñadida;
 import Aplicacion.Excepcion.TareaExistente;
 import Aplicacion.Listas.UtilidadesParaListas;
 import Aplicacion.Persona.Personas;
@@ -16,6 +17,7 @@ public class AltaTareas {
 
 
         public static void ejecutaAltaTareas(Scanner sn, Proyecto proyecto) {
+            sn.nextLine();
 
             List<Personas> personas = new LinkedList<>();
             List<String> etiquetas = new LinkedList<>();
@@ -29,13 +31,24 @@ public class AltaTareas {
             System.out.format("\nVas a introducir las personas que realizan esta tarea (si has terminado introduce la letra q): \n");
 
             int contador = 1;
+            Personas p;
             while (true) {
 
                 System.out.format("\nEl dni de la persona nº(" + (contador++) + ") es --> ");
                 String dni = sn.next();
                 if (dni.equals("q"))
                     break;
-                personas.add(proyecto.getPersona(dni));
+                try {
+                    p = proyecto.getPersona(dni);
+                    if(p != null)
+                        if (!personas.contains(p))
+                            personas.add(proyecto.getPersona(dni));
+                        else throw new PersonaNoAñadida();
+                    else throw new PersonaNoAñadida();
+                }
+                catch (PersonaNoAñadida e){
+                    System.out.println("La persona no ha sido añadida ya que no está dada de alta en el proyecto");
+                }
             }
 
             System.out.format("\nIntroduce el DNI de la persona responsable --> ");

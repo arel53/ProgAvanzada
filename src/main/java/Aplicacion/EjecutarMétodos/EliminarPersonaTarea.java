@@ -1,6 +1,7 @@
 package Aplicacion.EjecutarMétodos;
 
 import Aplicacion.Excepcion.PersonaNoAñadida;
+import Aplicacion.Excepcion.PersonaNoEliminada;
 import Aplicacion.Excepcion.TareaExistente;
 import Aplicacion.Excepcion.TareaNoExistente;
 import Aplicacion.Listas.UtilidadesParaListas;
@@ -20,12 +21,11 @@ public class EliminarPersonaTarea {
         String titulo = sn.nextLine();
 
         try {
-            Tareas tarea;
-            if(proyecto.getTarea(titulo) != null){
-                tarea = proyecto.getTarea(titulo);
+            Tareas tarea  =  proyecto.getTarea(titulo);
+
+            if(proyecto.getTarea(titulo) == null) {
+                throw new TareaNoExistente();
             }
-            else throw new TareaNoExistente();
-            System.out.format("\nLa tarea no existe");
 
 
 
@@ -35,15 +35,20 @@ public class EliminarPersonaTarea {
 
         Personas persona = proyecto.getPersona(dni);
 
-            if(!UtilidadesParaListas.insertarEnLista(dni,tarea.getPersonas())){
+        if (tarea.getResponsable().equals(persona)){
+            throw new PersonaNoEliminada("La persona no se ha eliminado ya que es la responsable de la tarea");
+        }
+
+
+            if(!UtilidadesParaListas.insertarEnLista(dni,tarea.getLista())){
                 tarea.eliminarPersonaTarea(persona);
                 System.out.println("Se ha eliminado correctamente");
 
             }
-            else throw new PersonaNoAñadida();
+            else throw new PersonaNoEliminada("La persona no se ha eliminado ya que no forma parte de la tarea");
         }
-        catch (PersonaNoAñadida | TareaNoExistente e ){
-            System.out.format("La persona o la tarea no existen");
+        catch (TareaNoExistente | PersonaNoEliminada e){
+            System.out.format(e.getMessage());
         }
         System.out.format("\n");
     }

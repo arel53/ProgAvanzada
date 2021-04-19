@@ -2,6 +2,7 @@ package Aplicacion.Tareas;
 
 import Aplicacion.Resultado.Resultado;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Informacion {
@@ -20,7 +21,7 @@ public class Informacion {
         this.descripcion = descripcion;
         this.finalizado = false;
         this.resultado = resultado;
-        this.etiquetas = etiquetas;
+        this.etiquetas = new LinkedList<>(etiquetas);
         this.prioridad = prioridad;
     }
 

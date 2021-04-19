@@ -17,7 +17,7 @@ public class Proyecto {
     List<Tareas> tareas;
 
     public Proyecto(String nombre){
-        this.nombre = nombre;
+        this.nombre = nombre.toLowerCase();
         this.personas = new LinkedList<>();
         this.tareas = new LinkedList<>();
     }
@@ -55,18 +55,18 @@ public class Proyecto {
     public Personas getPersona(String dni){
 
         for (Personas p : personas){
-            if (p.getDni().equals(dni.toUpperCase())){
+            if (p.getDni().equals(dni.toLowerCase())){
                 return p;
             }
         }
 
-        return new Personas();
+        return null;
     }
 
     public Tareas getTarea(String tarea){
 
         for (Tareas t : tareas){
-            if (t.getClave().equals(tarea))
+            if (t.getClave().equals(tarea.toLowerCase()))
                 return t;
         }
         return null;

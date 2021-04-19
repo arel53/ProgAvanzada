@@ -11,7 +11,7 @@ public class Participantes implements Serializable {
 
     public Participantes(Set<Personas> personas, Personas responsable){
 
-        this.personas = personas;
+        this.personas = new LinkedList<>(personas);
         this.responsable = responsable;
     }
 

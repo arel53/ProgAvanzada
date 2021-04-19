@@ -12,6 +12,7 @@ public class FinalizarTarea {
     public static void ejecutarFinalizarTarea(Scanner sn, Proyecto proyecto){
 
 
+        sn.nextLine();
         System.out.format("Vas a finalizar una tarea\n");
         System.out.format("Escribe el nombre de la tarea para finalizarla --> ");
 

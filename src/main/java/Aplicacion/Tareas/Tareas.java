@@ -51,7 +51,7 @@ public class Tareas <E> implements tieneLista,tieneClave{
     }
 
     public String toString(){
-        return "Título :" + getClave() + "\nPersonas : "+ getPersonas() + "\nResponsable :"+getResponsable() +"\n¿Finalizada?: " + getFinalizado() + "\nResultado: " + getResultado() + "\nFecha creación: "+ getCreacion() + "\nFecha finalización: " + getFechaFinalizacion()+ "\n\n";
+        return "Título :" + getClave() + "\nPersonas : "+ getLista() + "\nResponsable :"+getResponsable() +"\n¿Finalizada?: " + getFinalizado() + "\nResultado: " + getResultado() + "\nFecha creación: "+ getCreacion() + "\nFecha finalización: " + getFechaFinalizacion()+ "\n\n";
     }
 
     public static Tareas<String> createTarea(String titulo, String descripcion, List<Personas> personas, Personas responsable, int prioridad, Resultado resultado, List<String> etiquetas){
@@ -80,9 +80,6 @@ public class Tareas <E> implements tieneLista,tieneClave{
     }
 
 
-    public List<Personas> getPersonas() {
-        return participantes.personas;
-    }
 
     public Personas getResponsable() {
         return participantes.responsable;
@@ -102,7 +99,7 @@ public class Tareas <E> implements tieneLista,tieneClave{
     }
 
     @Override
-    public List getLista() {
+    public List<Personas> getLista() {
         return  participantes.personas;
     }
 

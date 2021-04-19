@@ -4,6 +4,7 @@ import Aplicacion.EjecutarMétodos.*;
 import Aplicacion.Excepcion.PersonaNoAñadida;
 import Aplicacion.Proyecto.Proyecto;
 
+import java.io.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -12,7 +13,11 @@ public class Menu {
     // TODO: Mucho cuidad con cómo leéis. Si el nombre del proyecto tiene más de una
     //       palabra, la aplicación se cuelga
 
-    public static void ejecutarMenu() throws PersonaNoAñadida {
+    public static void ejecutarMenu() throws IOException, ClassNotFoundException {
+
+
+
+
         Scanner sn = new Scanner(System.in);
 
         boolean salir = false;
@@ -20,19 +25,28 @@ public class Menu {
 
         System.out.format("\nVas a iniciar un proyecto");
         System.out.format("\nIntorduce el nombre del proyecto: ");
-        Proyecto proyecto = Proyecto.iniciarProyecto(sn.nextLine());
+        String fichero = sn.nextLine();
+        Proyecto proyecto = Proyecto.iniciarProyecto(fichero);
+        try{
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("proy.bin"));
+            proyecto = (Proyecto) ois.readObject();
+            ois.close();
+        }catch (Exception e){
+            System.out.format(e.getMessage());
+        }
+
+
+
 
         while (!salir) {
 
+
+            System.out.println(OpcionesMenu.getMenu());
+            System.out.format("\n\nElige una opción: ");
             try {
-
-
-                System.out.println(OpcionesMenu.getMenu());
-                System.out.format("\n\nElige una opción: ");
 
                 int opcion = sn.nextInt() - 1;
                 OpcionesMenu opcionMenu = OpcionesMenu.getOpcion(opcion);
-                sn.nextLine();
 
 
                 switch (opcionMenu) {
@@ -75,15 +89,14 @@ public class Menu {
                     default:
                         System.out.println("Las opciones son entre 1 y 10");
                 }
-            }
-            catch (InputMismatchException | IndexOutOfBoundsException e){
+            } catch (InputMismatchException | IndexOutOfBoundsException e) {
                 System.out.format("\nDebes introducir un número entre 1 y 10");
+                sn.nextLine();
             }
 
 
         }
 
-        System.out.format("\nAdiós\n");
     }
 
 
