@@ -13,7 +13,7 @@ public class Menu {
     // TODO: Mucho cuidad con cómo leéis. Si el nombre del proyecto tiene más de una
     //       palabra, la aplicación se cuelga
 
-    public static void ejecutarMenu() throws IOException, ClassNotFoundException {
+    public static void ejecutarMenu() {
 
 
 
@@ -28,7 +28,8 @@ public class Menu {
         String fichero = sn.nextLine();
         Proyecto proyecto = Proyecto.iniciarProyecto(fichero);
         try{
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream("proy.bin"));
+
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichero));
             proyecto = (Proyecto) ois.readObject();
             ois.close();
         }catch (Exception e){
