@@ -2,7 +2,9 @@ package Aplicacion.EjecutarMétodos;
 
 import Aplicacion.Proyecto.Proyecto;
 
-public class ListarPersonasProyecto {
+import java.io.Serializable;
+
+public class ListarPersonasProyecto  implements Serializable {
 
     public static void ejecutaListarPersonasProyecto(Proyecto proyecto){
 

@@ -3,9 +3,10 @@ package Aplicacion.EjecutarMétodos;
 import Aplicacion.Proyecto.Proyecto;
 import Aplicacion.Tareas.Tareas;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class FinalizarTarea {
+public class FinalizarTarea implements Serializable {
 
 
 

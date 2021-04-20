@@ -2,7 +2,10 @@ package Aplicacion.Resultado;
 
 import Aplicacion.Resultado.Resultado;
 
-public class Documentacion extends Resultado {
+import java.io.Serializable;
+
+
+public class Documentacion extends Resultado implements Serializable {
     String format;
     int pags;
     float espacio;

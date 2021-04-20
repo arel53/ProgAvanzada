@@ -65,7 +65,7 @@ Proyecto proyecto;
 
     @Test
     void altaPersona() {
-        for (int i = 0; i < 10000000; i++) {
+        for (int i = 0; i < 1000; i++) {
             // TODO: no tiene sentido crear un nuevo proyecto en cada vuelta, así
             //       es siempre la misma prueba: añadir un elemento a un proyecto vacío
             Personas add = new Personas(Integer.toString(i), "", "");

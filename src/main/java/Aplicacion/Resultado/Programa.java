@@ -2,7 +2,9 @@ package Aplicacion.Resultado;
 
 import Aplicacion.Resultado.Resultado;
 
-public class Programa extends Resultado {
+import java.io.Serializable;
+
+public class Programa extends Resultado implements Serializable {
 
     String lenguaje;
     int lineas;

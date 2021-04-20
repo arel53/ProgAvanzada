@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Locale;
 
 
-public class Proyecto {
-
+public class Proyecto implements Serializable{
+    private static final long serialVersionUID=42L;
     String nombre;
     List<Personas> personas;
     List<Tareas> tareas;
@@ -40,7 +40,7 @@ public class Proyecto {
     }
 
     public boolean altaTarea(Tareas tarea){
-            return tareas.add(tarea);
+        return tareas.add(tarea);
     }
 
 

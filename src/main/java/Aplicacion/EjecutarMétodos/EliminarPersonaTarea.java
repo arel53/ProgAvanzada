@@ -9,9 +9,10 @@ import Aplicacion.Persona.Personas;
 import Aplicacion.Proyecto.Proyecto;
 import Aplicacion.Tareas.Tareas;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class EliminarPersonaTarea {
+public class EliminarPersonaTarea implements Serializable {
 
     public static void ejecutaEliminarPersonaTarea(Scanner sn , Proyecto proyecto){
 

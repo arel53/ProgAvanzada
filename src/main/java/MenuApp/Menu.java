@@ -81,10 +81,31 @@ public class Menu {
                         ListarTareasProyecto.ejecutaListarTareasProyecto(proyecto);
                         break;
 
-                case SALIR:
-                    salir = true;
-                    System.out.format("\nVas a salir del menú\n\n");
-                    break;
+                    case LISTAR_PERSONAS_NO_RESPONSABLES:
+                        System.out.format("\nLa opción elegida es la 8\n\n");
+                        ListadoPersonasNoResponsablesTareas.ejecutarListadoPersonasNoResponsablesTareas(sn, proyecto);
+                        break;
+
+                    case LISTAR_TAREAS_VACIAS:
+                        System.out.format("\nLa opción elegida es la 9\n\n");
+                        ListadoTareaSinPersonasAsignada.ejecutarListadoPersonasSinTareaAsignada(proyecto);
+                        break;
+
+
+                    case SALIR:
+                        salir = true;
+
+
+                        try {
+                            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fichero));
+                            oos.writeObject(proyecto);
+                            oos.close();
+
+                        }catch (Exception e){
+                            System.out.format(e.getMessage());
+                        }
+                        System.out.format("\nVas a salir del menú\n\n");
+                        break;
 
 
                     default:

@@ -1,7 +1,10 @@
 package Aplicacion.Resultado;
 
 
-public class Biblioteca extends Programa {
+
+import java.io.Serializable;
+
+public class Biblioteca extends Programa  implements Serializable{
 
     public Biblioteca(String id, double horas, String tipo, String lenguaje, int lineas, int modulos){
         this.id = id;

@@ -2,7 +2,9 @@ package Aplicacion.Resultado;
 
 import Aplicacion.Resultado.Resultado;
 
-public class PagWeb extends Resultado {
+import java.io.Serializable;
+
+public class PagWeb extends Resultado implements Serializable  {
     String clase;
     String lenguaje;
     String backEnd;
