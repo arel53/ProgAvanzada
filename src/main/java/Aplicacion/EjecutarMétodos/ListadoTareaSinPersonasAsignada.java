@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ListadoTareaSinPersonasAsignada  implements Serializable {
+public class ListadoTareaSinPersonasAsignada{
 
     public static void ejecutarListadoPersonasSinTareaAsignada(Proyecto proyecto){
 

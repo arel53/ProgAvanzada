@@ -5,10 +5,11 @@ import Aplicacion.Listas.tieneLista;
 import Aplicacion.Persona.Personas;
 import Aplicacion.Resultado.Resultado;
 
+import java.io.Serializable;
 import java.util.List;
 import Aplicacion.Listas.tieneClave;
 
-public class Tareas <E> implements tieneLista,tieneClave{
+public class Tareas <E> implements tieneLista,tieneClave, Serializable {
     Informacion informacion;
     Fecha creacion;
     Fecha finalizacion;

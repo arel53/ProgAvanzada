@@ -12,7 +12,7 @@ import Aplicacion.Tareas.Tareas;
 import java.io.Serializable;
 import java.util.Scanner;
 
-public class EliminarPersonaTarea implements Serializable {
+public class EliminarPersonaTarea{
 
     public static void ejecutaEliminarPersonaTarea(Scanner sn , Proyecto proyecto){
 

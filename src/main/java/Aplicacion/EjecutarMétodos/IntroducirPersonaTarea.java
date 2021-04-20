@@ -12,7 +12,7 @@ import Aplicacion.Tareas.Tareas;
 import java.io.Serializable;
 import java.util.Scanner;
 
-public class IntroducirPersonaTarea  implements Serializable {
+public class IntroducirPersonaTarea{
 
     public static void ejectaIntroducirPersonaTarea(Scanner sn , Proyecto proyecto){
         sn.nextLine();

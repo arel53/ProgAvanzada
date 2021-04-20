@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ListadoPersonasNoResponsablesTareas implements Serializable {
+public class ListadoPersonasNoResponsablesTareas{
 
 
     public static void ejecutarListadoPersonasNoResponsablesTareas(Scanner sn, Proyecto proyecto){

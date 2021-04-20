@@ -13,7 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-public class AltaTareas {
+public class AltaTareas{
 
 
         public static void ejecutaAltaTareas(Scanner sn, Proyecto proyecto) {

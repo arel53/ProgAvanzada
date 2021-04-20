@@ -26,14 +26,18 @@ public class Menu {
         System.out.format("\nVas a iniciar un proyecto");
         System.out.format("\nIntorduce el nombre del proyecto: ");
         String fichero = sn.nextLine();
+        fichero = fichero + ".bin";
         Proyecto proyecto = Proyecto.iniciarProyecto(fichero);
         try{
 
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichero));
             proyecto = (Proyecto) ois.readObject();
             ois.close();
-        }catch (Exception e){
-            System.out.format(e.getMessage());
+        }catch (FileNotFoundException e2){
+            System.out.format("Se va a crear un fichero ya que no existe\n");
+        }
+        catch (Exception e1){
+            System.out.format(e1.getMessage()+"\n");
         }
 
 

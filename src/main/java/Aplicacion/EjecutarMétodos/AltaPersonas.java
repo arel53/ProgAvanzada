@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class AltaPersonas {
+public class AltaPersonas{
 
 
     public static void ejecutarAltaPersonas (Scanner sn, Proyecto proyecto){

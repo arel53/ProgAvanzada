@@ -4,7 +4,7 @@ import Aplicacion.Proyecto.Proyecto;
 
 import java.io.Serializable;
 
-public class ListarPersonasProyecto  implements Serializable {
+public class ListarPersonasProyecto{
 
     public static void ejecutaListarPersonasProyecto(Proyecto proyecto){
 

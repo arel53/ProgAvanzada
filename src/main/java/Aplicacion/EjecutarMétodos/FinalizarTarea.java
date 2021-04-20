@@ -6,7 +6,7 @@ import Aplicacion.Tareas.Tareas;
 import java.io.Serializable;
 import java.util.Scanner;
 
-public class FinalizarTarea implements Serializable {
+public class FinalizarTarea{
 
 
 
