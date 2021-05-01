@@ -7,7 +7,7 @@ import Aplicacion.Listas.tieneClave;
 import java.io.Serializable;
 import java.util.*;
 
-public class Personas <E> implements tieneLista,tieneClave, Serializable {
+public class Personas implements tieneLista,tieneClave, Serializable {
 
     public String dni;
     public String nombre;

@@ -59,19 +59,32 @@ public class AltaTareas{
 
             int prioridad = sn.nextInt();
 
+            System.out.format("\nIntroduce el id del resultado --> ");
+
+            String id = sn.next();
+
+            System.out.format("\nIntroduce el nº de horas invertido en su producción");
+
+            int horas = sn.nextInt();
+
+            System.out.format("\nElija la opcion\n(interno) si es resultado interno\n(comercializado) si está destinado a ser comercializado");
+
+            String tipo = sn.next();
+
             System.out.format("\nIndica el resultado esperado \n1. Documentación\n2. Programa\n3. Biblioteca\n4. Pag. Web--> ");
 
             int opcion = sn.nextInt();
+
             Resultado resultado;
             if (opcion == 1)
-                resultado = new Documentacion();
+                resultado = new Documentacion(id,horas,tipo);
             else if (opcion == 2)
-                resultado = new Programa();
+                resultado = new Programa(id,horas,tipo);
 
             else if (opcion == 3)
-                resultado = new Biblioteca();
+                resultado = new Biblioteca(id,horas,tipo);
             else
-                resultado = new PagWeb();
+                resultado = new PagWeb(id,horas,tipo);
 
             System.out.format("\nIndica la etiqueta que quieres añadir (q si has terminado) --> ");
             sn.nextLine();

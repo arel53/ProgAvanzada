@@ -19,6 +19,9 @@ public class Biblioteca extends Programa  implements Serializable{
         this.lineas = lineas;
         this.modulos = modulos;
     }
+    public Biblioteca(String id, double horas, String tipo){
+        super(id,horas,tipo);
+    }
     public Biblioteca(){
 
     }

@@ -36,7 +36,6 @@ public class UtilidadesParaListas implements Serializable {
 
     }
 
-    //Hemos creado este método ya que al pasarle un parámetro de tipo String como clave no nos dejaba añadirlo.
     public static <T extends tieneClave> boolean insertarEnLista(String  clave, List<T> objetos){
 
         for (T objeto : objetos){

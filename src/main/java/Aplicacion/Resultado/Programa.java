@@ -21,6 +21,10 @@ public class Programa extends Resultado implements Serializable {
         this.lineas = lineas;
         this.modulos = modulos;
     }
+    public Programa(String id, double horas, String tipo){
+        super(id,horas,tipo);
+
+    }
     public Programa(){
 
     }

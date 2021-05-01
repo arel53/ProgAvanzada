@@ -16,6 +16,9 @@ public class PagWeb extends Resultado implements Serializable  {
         this.backEnd = backEnd;
     }
 
+    public PagWeb(String id, double horas, String tipo) {
+        super(id,horas,tipo);
+    }
     public PagWeb() {
 
     }

@@ -10,8 +10,6 @@ import java.util.Scanner;
 
 public class Menu {
 
-    // TODO: Mucho cuidad con cómo leéis. Si el nombre del proyecto tiene más de una
-    //       palabra, la aplicación se cuelga
 
     public static void ejecutarMenu() {
 
@@ -109,6 +107,7 @@ public class Menu {
                             System.out.format(e.getMessage());
                         }
                         System.out.format("\nVas a salir del menú\n\n");
+
                         break;
 
 

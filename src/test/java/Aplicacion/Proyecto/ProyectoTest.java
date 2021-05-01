@@ -15,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProyectoTest {
 
-    // TODO: deberíais usar la anotación @BeforeEach para construir el proyecto cada vez
 Proyecto proyecto;
 
     @BeforeEach
@@ -26,7 +25,6 @@ Proyecto proyecto;
     @org.junit.jupiter.api.Test
     void listarPersonas() {
 
-        // TODO: mejor usar isEmpty para comprobar si están vacías
         assertTrue(proyecto.listarPersonas().isEmpty());
         assertTrue(proyecto.listarTareas().isEmpty());
 
@@ -66,8 +64,6 @@ Proyecto proyecto;
     @Test
     void altaPersona() {
         for (int i = 0; i < 1000; i++) {
-            // TODO: no tiene sentido crear un nuevo proyecto en cada vuelta, así
-            //       es siempre la misma prueba: añadir un elemento a un proyecto vacío
             Personas add = new Personas(Integer.toString(i), "", "");
             proyecto.altaPersona(add);
             Personas comparar = proyecto.getPersona(add.getClave());
@@ -105,7 +101,6 @@ Proyecto proyecto;
     void listarTareas() {
 
         for (int i = 0; i < 100; i++) {
-            // TODO: otra vez no tiene sentido crear un nuevo proyecto en cada vuelta
             Personas add = new Personas(Integer.toString(i), "", "");
             Tareas tarea = new Tareas(Integer.toString(i), "", new LinkedList<>(), add, 1, new Programa(), new LinkedList<>());
             proyecto.altaPersona(add);

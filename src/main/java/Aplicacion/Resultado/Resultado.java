@@ -2,7 +2,6 @@ package Aplicacion.Resultado;
 
 import java.io.Serializable;
 
-// TODO: Resultado debería ser una clase abstracta
 public abstract class Resultado implements Serializable {
 
     String id;

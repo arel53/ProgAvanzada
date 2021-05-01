@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 import Aplicacion.Listas.tieneClave;
 
-public class Tareas <E> implements tieneLista,tieneClave, Serializable {
+public class Tareas implements tieneLista,tieneClave,Serializable {
     Informacion informacion;
     Fecha creacion;
     Fecha finalizacion;
@@ -55,8 +55,8 @@ public class Tareas <E> implements tieneLista,tieneClave, Serializable {
         return "Título :" + getClave() + "\nPersonas : "+ getLista() + "\nResponsable :"+getResponsable() +"\n¿Finalizada?: " + getFinalizado() + "\nResultado: " + getResultado() + "\nFecha creación: "+ getCreacion() + "\nFecha finalización: " + getFechaFinalizacion()+ "\n\n";
     }
 
-    public static Tareas<String> createTarea(String titulo, String descripcion, List<Personas> personas, Personas responsable, int prioridad, Resultado resultado, List<String> etiquetas){
-        return new Tareas<>(titulo.toLowerCase(),descripcion,personas,responsable,prioridad,resultado,etiquetas);
+    public static Tareas createTarea(String titulo, String descripcion, List<Personas> personas, Personas responsable, int prioridad, Resultado resultado, List<String> etiquetas){
+        return new Tareas(titulo.toLowerCase(),descripcion,personas,responsable,prioridad,resultado,etiquetas);
     }
 
 
@@ -94,7 +94,6 @@ public class Tareas <E> implements tieneLista,tieneClave, Serializable {
         return finalizacion;
     }
 
-    // TODO: Es mejor que devuelva el booleano que una cadena
     public boolean getFinalizado(){
         return informacion.finalizado;
     }

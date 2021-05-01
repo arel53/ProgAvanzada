@@ -22,6 +22,10 @@ public class Documentacion extends Resultado implements Serializable {
         this.espacio = espacio;
     }
 
+    public Documentacion(String id, double horas, String tipo){
+
+        super(id,horas,tipo);
+    }
     public Documentacion(){
 
     }

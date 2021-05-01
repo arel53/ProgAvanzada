@@ -10,7 +10,6 @@ public class Informacion implements Serializable {
 
     String titulo;
     String descripcion;
-    // TODO: el resultado tiene que ser de la clase Resultado, no una cadena
     Resultado resultado;
     boolean finalizado;
     List<String> etiquetas;
