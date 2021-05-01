@@ -8,8 +8,9 @@ import Aplicacion.Resultado.Resultado;
 import java.io.Serializable;
 import java.util.List;
 import Aplicacion.Listas.tieneClave;
+import com.sun.jdi.event.StepEvent;
 
-public class Tareas implements tieneLista,tieneClave,Serializable {
+public class Tareas implements tieneLista<Personas>,tieneClave<String>,Serializable {
     Informacion informacion;
     Fecha creacion;
     Fecha finalizacion;
@@ -32,16 +33,13 @@ public class Tareas implements tieneLista,tieneClave,Serializable {
     }
 
 
-    public String introducirPersonaTarea(Personas persona){
-        participantes.personas.add(persona);
-        return "Se ha introducido correctamente a "+ persona.nombre;
+    public boolean introducirPersonaTarea(Personas persona){
+        return participantes.personas.add(persona);
     }
 
 
-    public String eliminarPersonaTarea(Personas personas){
-        participantes.personas.remove(personas);
-        return "Se ha eliminado correctamente a "+ personas.nombre;
-
+    public boolean eliminarPersonaTarea(Personas personas){
+        return participantes.personas.remove(personas);
     }
 
 
