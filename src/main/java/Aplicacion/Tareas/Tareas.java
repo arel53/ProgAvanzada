@@ -8,7 +8,6 @@ import Aplicacion.Resultado.Resultado;
 import java.io.Serializable;
 import java.util.List;
 import Aplicacion.Listas.tieneClave;
-import com.sun.jdi.event.StepEvent;
 
 public class Tareas implements tieneLista<Personas>,tieneClave<String>,Serializable {
     Informacion informacion;
@@ -22,6 +21,18 @@ public class Tareas implements tieneLista<Personas>,tieneClave<String>,Serializa
         this.participantes = new Participantes(personas,responsable);
         creacion = Fecha.fechaActual();
         finalizacion = new Fecha();
+
+    }
+
+    public Tareas(String titulo, String descripcion, List<Personas> personas, Personas responsable, int prioridad, Resultado resultado, List<String> etiquetas, calcularFacturacion calculofacturacion, double coste, double facturacion){
+
+        this.informacion = new Informacion(titulo, descripcion,resultado,etiquetas,prioridad);
+        this.participantes = new Participantes(personas,responsable);
+        creacion = Fecha.fechaActual();
+        finalizacion = new Fecha();
+        this.calculofacturacion = calculofacturacion;
+        this.coste = coste;
+        this.facturacion = facturacion;
 
     }
 
@@ -107,5 +118,23 @@ public class Tareas implements tieneLista<Personas>,tieneClave<String>,Serializa
     }
 
 
+    public double getCoste(){
+        return coste;
+    }
 
+    public double getFacturacion() {
+        return facturacion;
+    }
+
+    public void setCoste(double coste){
+        this.coste = coste;
+    }
+
+    public void setFacturacion(double facturacion){
+        this.facturacion = facturacion;
+    }
+
+    public calcularFacturacion getCalcularFacturacion(){
+        return calculofacturacion;
+    }
 }

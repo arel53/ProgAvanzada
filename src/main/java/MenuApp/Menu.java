@@ -32,7 +32,7 @@ public class Menu {
             proyecto = (Proyecto) ois.readObject();
             ois.close();
         }catch (FileNotFoundException e2){
-            System.out.format("Se va a crear un fichero ya que no existe\n");
+            System.out.format("\nSe va a crear un fichero ya que no existe\n");
         }
         catch (Exception e1){
             System.out.format(e1.getMessage()+"\n");
@@ -93,6 +93,11 @@ public class Menu {
                         ListadoTareaSinPersonasAsignada.ejecutarListadoPersonasSinTareaAsignada(proyecto);
                         break;
 
+                    case CAMBIAR_COSTE:
+                        System.out.format("\nLa opción elegida es la 10\n\n");
+                        SetCoste.ejecutaSetCoste(sn,proyecto);
+                        break;
+
 
                     case SALIR:
                         salir = true;
@@ -112,7 +117,7 @@ public class Menu {
 
 
                     default:
-                        System.out.println("Las opciones son entre 1 y 10");
+                        System.out.println("Las opciones son entre 1 y 11");
                 }
             } catch (InputMismatchException | IndexOutOfBoundsException e) {
                 System.out.format("\nDebes introducir un número entre 1 y 10");
