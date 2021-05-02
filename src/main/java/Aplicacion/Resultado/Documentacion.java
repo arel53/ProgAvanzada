@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 
 public class Documentacion extends Resultado implements Serializable {
+    private static final long serialVersionUID=42L;
     String format;
     int pags;
     float espacio;

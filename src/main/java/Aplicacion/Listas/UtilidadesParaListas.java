@@ -1,5 +1,6 @@
 package Aplicacion.Listas;
 
+
 import Aplicacion.Persona.Personas;
 import Aplicacion.Tareas.Tareas;
 
@@ -10,9 +11,9 @@ import java.util.List;
 public class UtilidadesParaListas implements Serializable {
 
 
-    public static <T extends tieneLista> List<T> elementosConListaVacia(List<T> objetos){
+    public static <T extends tieneLista<E>,E> List<T> elementosConListaVacia(List<T> objetos){
 
-        List<T> objetosListasVacias = new LinkedList<T>();
+        List<T> objetosListasVacias = new LinkedList<>();
 
         for (T objeto : objetos){
 
@@ -25,18 +26,7 @@ public class UtilidadesParaListas implements Serializable {
     }
 
 
-    public static <T extends tieneClave> boolean insertarEnLista(T clave, List<T> objetos){
-
-        for (T objeto : objetos){
-            
-            if (objeto.getClave().equals(clave))
-                return false;
-        }
-        return true;
-
-    }
-
-    public static <T extends tieneClave , E> boolean insertarEnLista(E  clave, List<T> objetos){
+    public static <T extends tieneClave<String> , E> boolean insertarEnLista(E  clave, List<T> objetos){
 
         for (T objeto : objetos){
 

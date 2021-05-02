@@ -5,6 +5,7 @@ import Aplicacion.Resultado.Resultado;
 import java.io.Serializable;
 
 public class Programa extends Resultado implements Serializable {
+    private static final long serialVersionUID=42L;
 
     String lenguaje;
     int lineas;

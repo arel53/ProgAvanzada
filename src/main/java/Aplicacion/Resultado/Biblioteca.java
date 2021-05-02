@@ -6,6 +6,8 @@ import java.io.Serializable;
 
 public class Biblioteca extends Programa  implements Serializable{
 
+    private static final long serialVersionUID=42L;
+
     public Biblioteca(String id, double horas, String tipo, String lenguaje, int lineas, int modulos){
         this.id = id;
         this.horas = horas;

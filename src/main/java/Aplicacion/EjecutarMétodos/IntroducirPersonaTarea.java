@@ -27,7 +27,7 @@ public class IntroducirPersonaTarea{
         try {
 
             if(proyecto.getTarea(titulo) == null) {
-                throw new TareaNoExistente();
+                throw new TareaNoExistente("\nLa tarea no existe");
             }
 
 
@@ -39,22 +39,18 @@ public class IntroducirPersonaTarea{
 
             persona = proyecto.getPersona(dni);
             if(persona == null){
-                throw new PersonaNoExistente();
+                throw new PersonaNoExistente("\nLa persona no existe en el proyecto");
             }
-            if (!UtilidadesParaListas.insertarEnLista(persona,tarea.getLista()))
-                throw new PersonaExistente();
-            else
-                System.out.println(tarea.introducirPersonaTarea(persona));
+            if (!UtilidadesParaListas.insertarEnLista(dni,tarea.getLista()))
+                throw new PersonaExistente("\nLa persona ya existía");
+            else {
+                tarea.introducirPersonaTarea(persona);
+                System.out.format("\nSe ha añadido correctamente a la persona en la tarea");
+            }
 
 
-        }catch (PersonaExistente e2){
-            System.out.format("La persona ya existía\n");
-        }
-        catch (TareaNoExistente e1){
-            System.out.format("La tarea no existe\n");
-        }
-        catch (PersonaNoExistente e3){
-            System.out.format("La persona no existe en el proyecto");
+        }catch (PersonaExistente | TareaNoExistente | PersonaNoExistente e){
+            System.out.format(e.getMessage());
         }
 
         System.out.format("\n");

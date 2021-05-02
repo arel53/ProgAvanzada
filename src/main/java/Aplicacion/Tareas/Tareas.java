@@ -63,7 +63,8 @@ public class Tareas implements tieneLista<Personas>,tieneClave<String>,Serializa
     }
 
     public String toString(){
-        return "Título :" + getClave() + "\nPersonas : "+ getLista() + "\nResponsable :"+getResponsable() +"\n¿Finalizada?: " + getFinalizado() + "\nResultado: " + getResultado() + "\nFecha creación: "+ getCreacion() + "\nFecha finalización: " + getFechaFinalizacion()+ "\n\n";
+        return "Título: " + getClave() + "\nPersonas: "+ getLista() + "\nResponsable: "+getResponsable() +"\n¿Finalizada?: " + getFinalizado() + "\nResultado: " + getResultado().getIdResultado() + "\nFecha creación: "+ getCreacion() +
+                "\nFecha finalización: " + getFechaFinalizacion()+ "\nCoste: "+ getCoste() + "€\nFacturación: "+ getFacturacion() +"€\n\n";
     }
 
     public static Tareas createTarea(String titulo, String descripcion, List<Personas> personas, Personas responsable, int prioridad, Resultado resultado, List<String> etiquetas, calcularFacturacion calculofacturacion, double coste,double facturacion){

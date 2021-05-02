@@ -1,8 +1,6 @@
 package Aplicacion.Excepcion;
 
-import Aplicacion.Persona.Personas;
 
-import javax.swing.*;
 
 public class PersonaNoEliminada extends Exception{
     public PersonaNoEliminada(){

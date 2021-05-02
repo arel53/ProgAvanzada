@@ -6,7 +6,6 @@ import Aplicacion.Persona.Personas;
 import Aplicacion.Proyecto.Proyecto;
 import Aplicacion.Tareas.Tareas;
 
-import java.io.Serializable;
 import java.util.Scanner;
 
 public class EliminarPersonaTarea{
@@ -14,6 +13,7 @@ public class EliminarPersonaTarea{
     public static void ejecutaEliminarPersonaTarea(Scanner sn , Proyecto proyecto){
 
         System.out.format("Introduce el título de la tarea --> ");
+        sn.nextLine();
 
 
         String titulo = sn.nextLine();

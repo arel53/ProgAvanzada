@@ -127,11 +127,11 @@ public class AltaTareas {
             Facturacion facturacion;
 
             if (opcion == 1)
-                facturacion = new Facturacion(coste, new Urgente());
+                facturacion = new Facturacion(new Urgente());
             else if (opcion == 2)
-                facturacion = new Facturacion(coste, new ConsumoInterno());
+                facturacion = new Facturacion(new ConsumoInterno());
             else if (opcion == 3)
-                facturacion = new Facturacion(coste, new Descuento());
+                facturacion = new Facturacion(new Descuento());
             else
                 throw new IndexOutOfBoundsException();
 

@@ -9,6 +9,8 @@ import java.util.*;
 
 public class Personas implements tieneLista<Tareas>,tieneClave<String>, Serializable {
 
+    private static final long serialVersionUID=42L;
+
     public String dni;
     public String nombre;
     public String correo;

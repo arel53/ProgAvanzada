@@ -5,6 +5,7 @@ import Aplicacion.Resultado.Resultado;
 import java.io.Serializable;
 
 public class PagWeb extends Resultado implements Serializable  {
+    private static final long serialVersionUID=42L;
     String clase;
     String lenguaje;
     String backEnd;

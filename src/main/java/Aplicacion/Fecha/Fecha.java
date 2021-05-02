@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Fecha implements Serializable {
+
+    private static final long serialVersionUID=42L;
     int dia;
     int mes;
     int año;

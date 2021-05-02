@@ -2,25 +2,21 @@ package Aplicacion.Tareas;
 
 import java.io.Serializable;
 
-public class Facturacion implements calcularFacturacion, Serializable {
-    private double coste;
+public class Facturacion implements Serializable {
+
     calcularFacturacion calculoFac;
 
-    public Facturacion(double coste, calcularFacturacion calculoFac){
-        this.coste = coste;
+    public Facturacion(calcularFacturacion calculoFac){
         this.calculoFac = calculoFac;
     }
 
-    public double getCoste(){
-            return coste;
-    }
     public calcularFacturacion getCalculoFac(){
         return calculoFac;
     }
 
-    @Override
+
+
     public double calculoFactura(double coste) {
         return calculoFac.calculoFactura(coste);
-
     }
 }

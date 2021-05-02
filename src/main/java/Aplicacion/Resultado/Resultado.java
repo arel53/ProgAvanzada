@@ -3,6 +3,7 @@ package Aplicacion.Resultado;
 import java.io.Serializable;
 
 public abstract class Resultado implements Serializable {
+    private static final long serialVersionUID=42L;
 
     String id;
     double horas;
@@ -22,6 +23,16 @@ public abstract class Resultado implements Serializable {
 
         return "ID :" + id;
 
+    }
+    public String getIdResultado(){
+        return id;
+    }
+    public double getHoras(){
+        return horas;
+    }
+
+    public String getTipo(){
+        return tipo;
     }
 
 }
