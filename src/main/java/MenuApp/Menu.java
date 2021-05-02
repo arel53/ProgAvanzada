@@ -22,7 +22,7 @@ public class Menu {
 
 
         System.out.format("\nVas a iniciar un proyecto");
-        System.out.format("\nIntorduce el nombre del proyecto: ");
+        System.out.format("\nIntroduce el nombre del proyecto: ");
         String fichero = sn.nextLine();
         fichero = fichero + ".bin";
         Proyecto proyecto = Proyecto.iniciarProyecto(fichero);
@@ -120,7 +120,7 @@ public class Menu {
                         System.out.println("Las opciones son entre 1 y 11");
                 }
             } catch (InputMismatchException | IndexOutOfBoundsException e) {
-                System.out.format("\nDebes introducir un número entre 1 y 10");
+                System.out.format("\nDebes introducir un número entre 1 y 11");
                 sn.nextLine();
             }
 

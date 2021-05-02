@@ -12,6 +12,7 @@ public enum OpcionesMenu {
     LISTAR_TAREAS_PROYECTO("Listar las tareas de un proyecto."),
     LISTAR_PERSONAS_NO_RESPONSABLES("Listar las personas que no son responsables"),
     LISTAR_TAREAS_VACIAS("Listar las tareas sin personas asignadas"),
+    CAMBIAR_COSTE("Cambiar el coste de una tarea"),
     SALIR("Cerrar menú.");
 
     String descrip;

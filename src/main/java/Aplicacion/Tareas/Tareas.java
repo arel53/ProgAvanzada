@@ -4,7 +4,6 @@ import Aplicacion.Fecha.Fecha;
 import Aplicacion.Listas.tieneLista;
 import Aplicacion.Persona.Personas;
 import Aplicacion.Resultado.Resultado;
-
 import java.io.Serializable;
 import java.util.List;
 import Aplicacion.Listas.tieneClave;
@@ -14,6 +13,9 @@ public class Tareas implements tieneLista<Personas>,tieneClave<String>,Serializa
     Fecha creacion;
     Fecha finalizacion;
     Participantes participantes;
+    calcularFacturacion calculofacturacion;
+    double coste;
+    double facturacion;
 
     public Tareas(String titulo, String descripcion, List<Personas> personas, Personas responsable, int prioridad, Resultado resultado, List<String> etiquetas){
 
@@ -64,8 +66,8 @@ public class Tareas implements tieneLista<Personas>,tieneClave<String>,Serializa
         return "Título :" + getClave() + "\nPersonas : "+ getLista() + "\nResponsable :"+getResponsable() +"\n¿Finalizada?: " + getFinalizado() + "\nResultado: " + getResultado() + "\nFecha creación: "+ getCreacion() + "\nFecha finalización: " + getFechaFinalizacion()+ "\n\n";
     }
 
-    public static Tareas createTarea(String titulo, String descripcion, List<Personas> personas, Personas responsable, int prioridad, Resultado resultado, List<String> etiquetas){
-        return new Tareas(titulo.toLowerCase(),descripcion,personas,responsable,prioridad,resultado,etiquetas);
+    public static Tareas createTarea(String titulo, String descripcion, List<Personas> personas, Personas responsable, int prioridad, Resultado resultado, List<String> etiquetas, calcularFacturacion calculofacturacion, double coste,double facturacion){
+        return new Tareas(titulo.toLowerCase(),descripcion,personas,responsable,prioridad,resultado,etiquetas,calculofacturacion,coste,facturacion);
     }
 
 

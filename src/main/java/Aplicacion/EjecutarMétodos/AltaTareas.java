@@ -1,6 +1,7 @@
 package Aplicacion.EjecutarMétodos;
 
 import Aplicacion.Excepcion.PersonaNoAñadida;
+import Aplicacion.Excepcion.PersonaNoExistente;
 import Aplicacion.Excepcion.TareaExistente;
 import Aplicacion.Listas.UtilidadesParaListas;
 import Aplicacion.Persona.Personas;
@@ -68,14 +69,16 @@ public class AltaTareas {
                         break;
                     }
 
-            Personas personaResponsable = proyecto.getPersona(sn.next());
+                } catch (PersonaNoExistente e1) {
+                    System.out.format("\nLa persona no existe.");
+                }
+
+            }
 
             System.out.format("\nIntroduce la prioridad (entero) --> ");
-
             int prioridad = sn.nextInt();
 
             System.out.format("\nIntroduce el id del resultado --> ");
-
             String id = sn.next();
 
             System.out.format("\nIntroduce el nº de horas invertido en su producción --> ");
@@ -86,8 +89,10 @@ public class AltaTareas {
 
             System.out.format("\nIndica el resultado esperado \n1. Documentación\n2. Programa\n3. Biblioteca\n4. Pag. Web\n--> ");
             int opcion = sn.nextInt();
-
             Resultado resultado;
+
+        try {
+
             if (opcion == 1)
                 resultado = new Documentacion(id, horas, tipo);
             else if (opcion == 2)
