@@ -27,6 +27,12 @@ public class AltaTareas {
 
         System.out.format("Introduce el título --> ");
         String titulo = sn.nextLine();
+
+        try {
+            if (!UtilidadesParaListas.insertarEnLista(titulo,proyecto.listarTareas()))
+                throw new TareaExistente();
+
+
         System.out.format("\nIntroduce la descripción --> ");
         String descrip = sn.nextLine();
         System.out.format("\nVas a introducir las personas que realizan esta tarea (si has terminado introduce la letra q): \n");
@@ -91,7 +97,7 @@ public class AltaTareas {
             int opcion = sn.nextInt();
             Resultado resultado;
 
-        try {
+
 
             if (opcion == 1)
                 resultado = new Documentacion(id, horas, tipo);
@@ -129,7 +135,7 @@ public class AltaTareas {
             if (opcion == 1)
                 facturacion = new Facturacion(new Urgente());
             else if (opcion == 2)
-                facturacion = new Facturacion(new ConsumoInterno());
+                facturacion = new Facturacion( new ConsumoInterno());
             else if (opcion == 3)
                 facturacion = new Facturacion(new Descuento());
             else
@@ -140,21 +146,20 @@ public class AltaTareas {
 
             if (UtilidadesParaListas.insertarEnLista(titulo, proyecto.listarTareas())) {
                 proyecto.altaTarea(tarea);
-                personaResponsable.addPersonaTareas(tarea);
+                if (personaResponsable != null)
+                    personaResponsable.addPersonaTareas(tarea);
 
             } else throw new TareaExistente();
 
             System.out.format("\nEl calculo de la facturación es de %1.2f euros", tarea.getFacturacion());
 
         } catch (TareaExistente e) {
-
-            System.out.format("\nLa tarea %s ya existía y no se ha añadido ", titulo);
+            System.out.format("\nLa tarea %s ya existía y no se ha añadido", titulo);
 
         } catch (InputMismatchException | IndexOutOfBoundsException e) {
             System.out.format("\nOpción incorrecta");
         }
 
-        sn.nextLine();
         System.out.format("\n");
 
 

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Participantes implements Serializable {
+    private static final long serialVersionUID=42L;
 
     List<Personas> personas;
     Personas responsable;

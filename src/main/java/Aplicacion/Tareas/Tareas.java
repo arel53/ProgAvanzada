@@ -9,6 +9,7 @@ import java.util.List;
 import Aplicacion.Listas.tieneClave;
 
 public class Tareas implements tieneLista<Personas>,tieneClave<String>,Serializable {
+    private static final long serialVersionUID=42L;
     Informacion informacion;
     Fecha creacion;
     Fecha finalizacion;
@@ -63,7 +64,7 @@ public class Tareas implements tieneLista<Personas>,tieneClave<String>,Serializa
     }
 
     public String toString(){
-        return "Título: " + getClave() + "\nPersonas: "+ getLista() + "\nResponsable: "+getResponsable() +"\n¿Finalizada?: " + getFinalizado() + "\nResultado: " + getResultado().getIdResultado() + "\nFecha creación: "+ getCreacion() +
+        return "Título: " + getClave() + "\nPersonas: "+ getLista() + "\nResponsable: "+getResponsable() +"\n¿Finalizada?: " + getFinalizado() + "\n Id del resultado: " + getResultado().getIdResultado() + "\nFecha creación: "+ getCreacion() +
                 "\nFecha finalización: " + getFechaFinalizacion()+ "\nCoste: "+ getCoste() + "€\nFacturación: "+ getFacturacion() +"€\n\n";
     }
 

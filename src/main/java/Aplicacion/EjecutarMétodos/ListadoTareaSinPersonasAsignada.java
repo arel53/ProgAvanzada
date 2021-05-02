@@ -12,12 +12,14 @@ public class ListadoTareaSinPersonasAsignada{
 
     public static void ejecutarListadoPersonasSinTareaAsignada(Proyecto proyecto){
 
-        List<Tareas> tareasSinPersonaAsignada = new LinkedList<>();
 
-        tareasSinPersonaAsignada = UtilidadesParaListas.elementosConListaVacia(proyecto.listarTareas());
-
-        for (Tareas tareas : tareasSinPersonaAsignada){
-            System.out.format("Titulo --> %s\n",tareas.getClave());
+        List<Tareas> tareasSinPersonaAsignada = UtilidadesParaListas.elementosConListaVacia(proyecto.listarTareas());
+        if (tareasSinPersonaAsignada.isEmpty())
+            System.out.format("No hay ninguna tarea sin personas asignadas\n");
+        else {
+            for (Tareas tareas : tareasSinPersonaAsignada) {
+                System.out.format("Titulo --> %s\n", tareas.getClave());
+            }
         }
         System.out.format("\n");
     }

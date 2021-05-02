@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Informacion implements Serializable {
+    private static final long serialVersionUID=42L;
 
     String titulo;
     String descripcion;
