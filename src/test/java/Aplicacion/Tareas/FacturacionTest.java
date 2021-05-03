@@ -1,5 +1,7 @@
 package Aplicacion.Tareas;
 
+import Aplicacion.Excepcion.PersonaNoAñadida;
+import Aplicacion.Excepcion.TareaExistente;
 import Aplicacion.Persona.Personas;
 import Aplicacion.Proyecto.Proyecto;
 import Aplicacion.Resultado.Programa;
@@ -24,7 +26,7 @@ class FacturacionTest {
 
 
     @Test
-    void calculoFactura(){
+    void calculoFactura() throws PersonaNoAñadida, TareaExistente {
         Facturacion fac1;
         Facturacion fac2;
         Facturacion fac3;

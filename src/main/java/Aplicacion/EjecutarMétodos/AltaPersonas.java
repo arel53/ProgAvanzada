@@ -17,7 +17,7 @@ public class AltaPersonas{
 
 
         System.out.format("\nVas a dar de alta a personas que trabajan en el proyecto\n");
-        System.out.format("\nIntorduce el nombre de la persona y sus datos (DNI,nombre, correo y sus tareas) respectivamente: \n");
+        System.out.format("\nIntroduce el nombre de la persona y sus datos (DNI,nombre, correo y sus tareas) respectivamente: \n");
         System.out.format("\nIntroduce el DNI --> ");
 
 

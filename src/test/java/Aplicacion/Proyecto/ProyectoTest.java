@@ -108,7 +108,7 @@ Proyecto proyecto;
     }
 
     @Test
-    void listarTareas() {
+    void listarTareas() throws PersonaNoAñadida, TareaExistente, TareaNoExistente {
 
         for (int i = 0; i < 100; i++) {
             Personas add = new Personas(Integer.toString(i), "", "");

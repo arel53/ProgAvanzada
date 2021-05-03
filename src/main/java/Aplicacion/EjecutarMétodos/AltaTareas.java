@@ -95,7 +95,7 @@ public class AltaTareas {
 
             System.out.format("\nIndica el resultado esperado \n1. Documentación\n2. Programa\n3. Biblioteca\n4. Pag. Web\n--> ");
             int opcion = sn.nextInt();
-            Resultado resultado;
+            Resultado resultado=null;
 
 
             if (opcion == 1)
@@ -138,7 +138,7 @@ public class AltaTareas {
             else if (opcion == 3)
                 facturacion = new Facturacion(new Descuento());
             else
-                throw new IndexOutOfBoundsException();
+                OpcionFueraDeRango.ejecutarOpcionFueraRango(opcion,3);
 
 
             Tareas tarea = Tareas.createTarea(titulo, descrip, personas, personaResponsable, prioridad, resultado, etiquetas, facturacion.getCalculoFac(), coste, facturacion.calculoFactura(coste));
@@ -146,7 +146,7 @@ public class AltaTareas {
 
             proyecto.altaTarea(tarea);
 
-            } else throw new TareaExistente();
+
 
             System.out.format("\nEl calculo de la facturación es de %1.2f euros", tarea.getFacturacion());
 

@@ -24,18 +24,29 @@ class UtilidadesParaListasTest <T> {
         proyecto = new Proyecto();
     }
 
+    Personas personaCon;
+    Personas personaSin;
+    Tareas tarea1;
+
+    @BeforeEach
+    void crearPersonasTareas() throws PersonaNoAñadida, TareaExistente {
+
+
+        personaCon = new Personas("1", "1", "1");
+        personaSin = new Personas("2", "2", "2");
+        proyecto.altaPersona(personaCon);
+        proyecto.altaPersona(personaSin);
+
+        tarea1 = new Tareas("1", "", new LinkedList<>(), personaCon, 1, new Programa(), new LinkedList<>());
+
+        proyecto.altaTarea(tarea1);
+    }
+
     @Test
     void elementosConListaVacia () throws PersonaNoAñadida, TareaExistente, PersonaNoExistente {
 
 
-        Personas personaCon = new Personas("1","1","1");
-        Personas personaSin = new Personas("2","2","2");
-        proyecto.altaPersona(personaCon);
-        proyecto.altaPersona(personaSin);
 
-        Tareas tarea1 = new Tareas("1", "", new LinkedList<>(), personaCon, 1, new Programa(), new LinkedList<>());
-
-        proyecto.altaTarea(tarea1);
 
         List<Personas> objetos = new LinkedList<>();
         personaCon = proyecto.getPersona(personaCon.getClave());
