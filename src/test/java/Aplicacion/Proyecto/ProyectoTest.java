@@ -22,11 +22,17 @@ Proyecto proyecto;
         proyecto = new Proyecto();
     }
 
+
+
+
+
     @org.junit.jupiter.api.Test
     void listarPersonas() {
 
         assertTrue(proyecto.listarPersonas().isEmpty());
         assertTrue(proyecto.listarTareas().isEmpty());
+
+
 
     }
 
@@ -120,11 +126,17 @@ Proyecto proyecto;
 
 
         }
-        
+
+
+
         
 
 
     }
+
+
+
+
 
 
 

@@ -40,6 +40,7 @@ public class Proyecto implements Serializable{
     }
 
     public boolean altaTarea(Tareas tarea){
+        tarea.getResponsable().addPersonaTareas(tarea);
         return tareas.add(tarea);
     }
 

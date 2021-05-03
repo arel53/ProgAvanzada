@@ -52,8 +52,11 @@ public class AltaTareas {
                         personas.add(proyecto.getPersona(dni));
                     else throw new PersonaNoAñadida("La persona ya estaba añadida");
                 else throw new PersonaNoAñadida();
+
             } catch (PersonaNoAñadida e) {
+
                 System.out.println(e.getMessage());
+
             }
         }
 
@@ -146,8 +149,6 @@ public class AltaTareas {
 
             if (UtilidadesParaListas.insertarEnLista(titulo, proyecto.listarTareas())) {
                 proyecto.altaTarea(tarea);
-                if (personaResponsable != null)
-                    personaResponsable.addPersonaTareas(tarea);
 
             } else throw new TareaExistente();
 
