@@ -21,9 +21,7 @@ public class EliminarPersonaTarea{
         try {
             Tareas tarea  =  proyecto.getTarea(titulo);
 
-            if(proyecto.getTarea(titulo) == null) {
-                throw new TareaNoExistente();
-            }
+            proyecto.getTarea(titulo);
 
 
 

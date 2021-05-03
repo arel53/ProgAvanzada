@@ -1,5 +1,6 @@
 package Aplicacion.EjecutarMétodos;
 
+import Aplicacion.Excepcion.TareaNoExistente;
 import Aplicacion.Proyecto.Proyecto;
 import Aplicacion.Tareas.Tareas;
 
@@ -10,8 +11,7 @@ public class FinalizarTarea{
 
 
 
-    public static void ejecutarFinalizarTarea(Scanner sn, Proyecto proyecto){
-
+    public static void ejecutarFinalizarTarea(Scanner sn, Proyecto proyecto) throws TareaNoExistente {
 
         sn.nextLine();
         System.out.format("Vas a finalizar una tarea\n");

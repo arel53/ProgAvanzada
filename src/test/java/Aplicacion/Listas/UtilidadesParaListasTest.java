@@ -1,5 +1,8 @@
 package Aplicacion.Listas;
 
+import Aplicacion.Excepcion.PersonaNoAñadida;
+import Aplicacion.Excepcion.PersonaNoExistente;
+import Aplicacion.Excepcion.TareaExistente;
 import Aplicacion.Persona.Personas;
 import Aplicacion.Proyecto.Proyecto;
 import Aplicacion.Resultado.Programa;
@@ -12,16 +15,17 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class UtilidadesParaListasTest <T>{
+class UtilidadesParaListasTest <T> {
 
     Proyecto proyecto;
+
     @BeforeEach
-    void preparaProyecto(){
+    void preparaProyecto() {
         proyecto = new Proyecto();
     }
 
     @Test
-    void elementosConListaVacia () {
+    void elementosConListaVacia () throws PersonaNoAñadida, TareaExistente, PersonaNoExistente {
 
 
         Personas personaCon = new Personas("1","1","1");
@@ -45,5 +49,11 @@ class UtilidadesParaListasTest <T>{
 
     @Test
     void insertarEnLista() {
+        assertFalse(UtilidadesParaListas.insertarEnLista(personaCon.getClave(),proyecto.listarPersonas()));
+
+        assertTrue(UtilidadesParaListas.insertarEnLista("12525",proyecto.listarPersonas()));
+
+        assertFalse(UtilidadesParaListas.insertarEnLista(tarea1.getClave(),proyecto.listarTareas()));
+        assertTrue(UtilidadesParaListas.insertarEnLista("15252525",proyecto.listarTareas()));
     }
 }

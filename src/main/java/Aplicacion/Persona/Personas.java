@@ -1,5 +1,7 @@
 package Aplicacion.Persona;
 
+import Aplicacion.Excepcion.PersonaNoAñadida;
+import Aplicacion.Listas.UtilidadesParaListas;
 import Aplicacion.Tareas.Tareas;
 import Aplicacion.Listas.tieneLista;
 import Aplicacion.Listas.tieneClave;
@@ -44,7 +46,7 @@ public class Personas implements tieneLista<Tareas>,tieneClave<String>, Serializ
     }
 
 
-    public static Personas createPersona(String dni,String nombre, String correo){
+    public static Personas createPersona(String dni,String nombre, String correo , List<Personas> personas) throws PersonaNoAñadida {
         return new Personas(dni.toUpperCase(),nombre,correo);
     }
 

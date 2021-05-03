@@ -29,58 +29,55 @@ public class AltaTareas {
         String titulo = sn.nextLine();
 
         try {
-            if (!UtilidadesParaListas.insertarEnLista(titulo,proyecto.listarTareas()))
-                throw new TareaExistente();
+
+            ExisteTitulo.ejecutaExisteTitulo(titulo, proyecto.listarTareas());
 
 
-        System.out.format("\nIntroduce la descripción --> ");
-        String descrip = sn.nextLine();
-        System.out.format("\nVas a introducir las personas que realizan esta tarea (si has terminado introduce la letra q): \n");
+            System.out.format("\nIntroduce la descripción --> ");
+            String descrip = sn.nextLine();
+            System.out.format("\nVas a introducir las personas que realizan esta tarea (si has terminado introduce la letra q): \n");
 
-        int contador = 1;
-        Personas p;
-        while (true) {
+            int contador = 1;
+            Personas p;
+            while (true) {
 
-            System.out.format("\nEl dni de la persona nº(" + (contador++) + ") es --> ");
-            String dni = sn.next();
-            if (dni.equals("q"))
-                break;
-            try {
-                p = proyecto.getPersona(dni);
-                if (p != null)
-                    if (!personas.contains(p))
-                        personas.add(proyecto.getPersona(dni));
-                    else throw new PersonaNoAñadida("La persona ya estaba añadida");
-                else throw new PersonaNoAñadida();
+                try {
 
-            } catch (PersonaNoAñadida e) {
+                    System.out.format("\nEl dni de la persona nº(" + (contador++) + ") es --> ");
+                    String dni = sn.next();
+                    if (dni.equals("q"))
+                        break;
+                    personas.add(proyecto.getPersona(dni));
+                }catch (PersonaNoExistente e){
+                    System.out.println(e.getMessage());
+                }
 
-                System.out.println(e.getMessage());
 
             }
-        }
 
 
             Personas personaResponsable = null;
             while (true) {
-                System.out.format("\nIntroduce el DNI de la persona responsable --> ");
-                String personaR = sn.next();
-                Personas persona = proyecto.getPersona(personaR);
-
-                if (personaR.equals("q"))
-                    break;
-
                 try {
-                    if (persona == null) {
-                        throw new PersonaNoExistente();
-                    } else{
+
+
+                    System.out.format("\nIntroduce el DNI de la persona responsable --> ");
+                    String personaR = sn.next();
+                    Personas persona = proyecto.getPersona(personaR);
+
+
+                    if (personaR.equals("q"))
+                        break;
+                    else if (persona != null) {
                         personaResponsable = proyecto.getPersona(personaR);
                         break;
                     }
-
-                } catch (PersonaNoExistente e1) {
-                    System.out.format("\nLa persona no existe.");
                 }
+                catch (PersonaNoExistente e){
+                    System.out.println(e.getMessage());
+                }
+
+
 
             }
 
@@ -101,7 +98,6 @@ public class AltaTareas {
             Resultado resultado;
 
 
-
             if (opcion == 1)
                 resultado = new Documentacion(id, horas, tipo);
             else if (opcion == 2)
@@ -111,7 +107,7 @@ public class AltaTareas {
                 resultado = new Biblioteca(id, horas, tipo);
             else if (opcion == 4)
                 resultado = new PagWeb(id, horas, tipo);
-            else throw new IndexOutOfBoundsException();
+            else OpcionFueraDeRango.ejecutarOpcionFueraRango(opcion,4);
 
             System.out.format("\nIndica la etiqueta que quieres añadir (q si has terminado) --> ");
             sn.nextLine();
@@ -133,12 +129,12 @@ public class AltaTareas {
 
             opcion = sn.nextInt();
 
-            Facturacion facturacion;
+            Facturacion facturacion = null;
 
             if (opcion == 1)
                 facturacion = new Facturacion(new Urgente());
             else if (opcion == 2)
-                facturacion = new Facturacion( new ConsumoInterno());
+                facturacion = new Facturacion(new ConsumoInterno());
             else if (opcion == 3)
                 facturacion = new Facturacion(new Descuento());
             else
@@ -147,8 +143,8 @@ public class AltaTareas {
 
             Tareas tarea = Tareas.createTarea(titulo, descrip, personas, personaResponsable, prioridad, resultado, etiquetas, facturacion.getCalculoFac(), coste, facturacion.calculoFactura(coste));
 
-            if (UtilidadesParaListas.insertarEnLista(titulo, proyecto.listarTareas())) {
-                proyecto.altaTarea(tarea);
+
+            proyecto.altaTarea(tarea);
 
             } else throw new TareaExistente();
 

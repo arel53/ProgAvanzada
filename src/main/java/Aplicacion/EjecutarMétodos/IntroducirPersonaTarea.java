@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class IntroducirPersonaTarea{
 
-    public static void ejectaIntroducirPersonaTarea(Scanner sn , Proyecto proyecto){
+    public static void ejectaIntroducirPersonaTarea(Scanner sn , Proyecto proyecto) throws TareaNoExistente {
         sn.nextLine();
 
 
@@ -26,9 +26,7 @@ public class IntroducirPersonaTarea{
 
         try {
 
-            if(proyecto.getTarea(titulo) == null) {
-                throw new TareaNoExistente("\nLa tarea no existe");
-            }
+            proyecto.getTarea(titulo);
 
 
         System.out.format("\nIntroduce el DNI de la persona --> ");

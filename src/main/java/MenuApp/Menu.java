@@ -2,6 +2,7 @@ package MenuApp;
 
 import Aplicacion.EjecutarMétodos.*;
 import Aplicacion.Excepcion.PersonaNoAñadida;
+import Aplicacion.Excepcion.TareaNoExistente;
 import Aplicacion.Proyecto.Proyecto;
 
 import java.io.*;
@@ -122,6 +123,8 @@ public class Menu {
             } catch (InputMismatchException | IndexOutOfBoundsException e) {
                 System.out.format("\nDebes introducir un número entre 1 y 11");
                 sn.nextLine();
+            }catch (TareaNoExistente e){
+                System.out.format(e.getMessage());
             }
 
 

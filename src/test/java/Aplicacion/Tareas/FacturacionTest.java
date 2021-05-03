@@ -38,9 +38,9 @@ class FacturacionTest {
             coste = i * 100;
 
 
-            Tareas tarea1 = new Tareas(Integer.toString(i), "", new LinkedList<>(), add, 1, new Programa(), new LinkedList<>(),fac1.getCalculoFac(),coste,fac1.calculoFactura(coste));
-            Tareas tarea2 = new Tareas(Integer.toString(i), "", new LinkedList<>(), add, 1, new Programa(), new LinkedList<>(),fac2.getCalculoFac(),coste,fac2.calculoFactura(coste));
-            Tareas tarea3 = new Tareas(Integer.toString(i), "", new LinkedList<>(), add, 1, new Programa(), new LinkedList<>(),fac3.getCalculoFac(),coste,fac3.calculoFactura(coste));
+            Tareas tarea1 = new Tareas(Integer.toString(-i), "1", new LinkedList<>(), add, 1, new Programa(), new LinkedList<>(),fac1.getCalculoFac(),coste,fac1.calculoFactura(coste));
+            Tareas tarea2 = new Tareas(Integer.toString((i *10) + 1), "2", new LinkedList<>(), add, 1, new Programa(), new LinkedList<>(),fac2.getCalculoFac(),coste,fac2.calculoFactura(coste));
+            Tareas tarea3 = new Tareas(Integer.toString((i *50)+2), "3", new LinkedList<>(), add, 1, new Programa(), new LinkedList<>(),fac3.getCalculoFac(),coste,fac3.calculoFactura(coste));
             proyecto.altaTarea(tarea1);
             proyecto.altaTarea(tarea2);
             proyecto.altaTarea(tarea3);

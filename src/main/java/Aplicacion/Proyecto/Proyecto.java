@@ -1,5 +1,10 @@
 package Aplicacion.Proyecto;
 
+import Aplicacion.Excepcion.PersonaNoAñadida;
+import Aplicacion.Excepcion.PersonaNoExistente;
+import Aplicacion.Excepcion.TareaExistente;
+import Aplicacion.Excepcion.TareaNoExistente;
+import Aplicacion.Listas.UtilidadesParaListas;
 import Aplicacion.Persona.Personas;
 import Aplicacion.Tareas.Tareas;
 
@@ -35,11 +40,17 @@ public class Proyecto implements Serializable{
         return new Proyecto(nombre);
     }
 
-    public void altaPersona(Personas persona){
+    public void altaPersona(Personas persona) throws PersonaNoAñadida {
+        if (!UtilidadesParaListas.insertarEnLista(persona.getClave(), personas))
+            throw new PersonaNoAñadida();
         personas.add(persona);
     }
 
-    public boolean altaTarea(Tareas tarea){
+    public boolean altaTarea(Tareas tarea) throws TareaExistente {
+        if (!UtilidadesParaListas.insertarEnLista(tarea.getClave(), tareas)) {
+            throw new TareaExistente();
+        }
+
         tarea.getResponsable().addPersonaTareas(tarea);
         return tareas.add(tarea);
     }
@@ -53,7 +64,7 @@ public class Proyecto implements Serializable{
         return tareas;
     }
 
-    public Personas getPersona(String dni){
+    public Personas getPersona(String dni) throws PersonaNoExistente {
 
         for (Personas p : personas){
             if (p.getDni().equals(dni.toLowerCase())){
@@ -61,16 +72,16 @@ public class Proyecto implements Serializable{
             }
         }
 
-        return null;
+        throw new PersonaNoExistente();
     }
 
-    public Tareas getTarea(String tarea){
+    public Tareas getTarea(String tarea) throws TareaNoExistente {
 
         for (Tareas t : tareas){
             if (t.getClave().equals(tarea.toLowerCase()))
                 return t;
         }
-        return null;
+        throw new TareaNoExistente();
     }
 
     public String getNombre(){

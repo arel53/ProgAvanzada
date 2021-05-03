@@ -30,13 +30,9 @@ public class AltaPersonas{
         String correo = sn.next();
 
         try {
-        if (UtilidadesParaListas.insertarEnLista(dni, proyecto.listarPersonas())) {
-            proyecto.altaPersona(Personas.createPersona(dni, nombre, correo));
+            proyecto.altaPersona(Personas.createPersona(dni, nombre, correo, proyecto.listarPersonas()));
 
             System.out.println("Se ha añadido correctamente a --> " + nombre);
-        }
-        else
-            throw new PersonaNoAñadida();
 
 
     } catch (PersonaNoAñadida e){

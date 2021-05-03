@@ -1,5 +1,9 @@
 package Aplicacion.Proyecto;
 
+import Aplicacion.Excepcion.PersonaNoAñadida;
+import Aplicacion.Excepcion.PersonaNoExistente;
+import Aplicacion.Excepcion.TareaExistente;
+import Aplicacion.Excepcion.TareaNoExistente;
 import Aplicacion.Listas.UtilidadesParaListas;
 import Aplicacion.Persona.Personas;
 import Aplicacion.Resultado.Programa;
@@ -38,7 +42,7 @@ Proyecto proyecto;
 
 
     @Test
-    void ListadoTareaSinPersonas() {
+    void ListadoTareaSinPersonas() throws PersonaNoAñadida, TareaExistente {
 
         Personas add1 = new Personas("1", "", "");
         Personas add2 = new Personas("2", "", "");
@@ -68,7 +72,7 @@ Proyecto proyecto;
     }
 
     @Test
-    void altaPersona() {
+    void altaPersona() throws PersonaNoAñadida, PersonaNoExistente {
         for (int i = 0; i < 1000; i++) {
             Personas add = new Personas(Integer.toString(i), "", "");
             proyecto.altaPersona(add);
@@ -83,7 +87,7 @@ Proyecto proyecto;
     }
 
     @Test
-    void listarPersonasNoResponsablesTareas() {
+    void listarPersonasNoResponsablesTareas() throws PersonaNoAñadida, TareaExistente {
 
             List<Tareas> responsable = new LinkedList<>();
             responsable.add(new Tareas());
@@ -126,7 +130,6 @@ Proyecto proyecto;
 
 
         }
-
 
 
         
