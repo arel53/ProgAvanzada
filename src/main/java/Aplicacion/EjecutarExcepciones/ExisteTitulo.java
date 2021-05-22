@@ -1,4 +1,4 @@
-package Aplicacion.EjecutarMétodos;
+package Aplicacion.EjecutarExcepciones;
 
 import Aplicacion.Excepcion.TareaExistente;
 import Aplicacion.Listas.UtilidadesParaListas;
@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ExisteTitulo {
 
-    static void ejecutaExisteTitulo(String titulo, List<Tareas> tareas) throws TareaExistente {
+    public static void ejecutaExisteTitulo(String titulo, List<Tareas> tareas) throws TareaExistente {
 
         if (!UtilidadesParaListas.insertarEnLista(titulo,tareas))
             throw new TareaExistente();

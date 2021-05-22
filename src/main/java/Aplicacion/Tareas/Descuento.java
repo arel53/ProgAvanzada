@@ -1,14 +1,12 @@
 package Aplicacion.Tareas;
 
-import Aplicacion.Tareas.Facturacion;
-
 import java.io.Serializable;
 
 
 public class Descuento implements calcularFacturacion,Serializable {
     private static final long serialVersionUID=42L;
 
-    private static final double DESCUENTO = 0.90;
+    double DESCUENTO = 0.90;
 
 
     @Override

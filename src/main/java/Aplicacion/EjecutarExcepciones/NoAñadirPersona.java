@@ -1,4 +1,4 @@
-package Aplicacion.EjecutarMétodos;
+package Aplicacion.EjecutarExcepciones;
 
 import Aplicacion.Excepcion.PersonaNoAñadida;
 import Aplicacion.Persona.Personas;

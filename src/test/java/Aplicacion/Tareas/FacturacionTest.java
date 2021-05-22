@@ -27,22 +27,22 @@ class FacturacionTest {
 
     @Test
     void calculoFactura() throws PersonaNoAñadida, TareaExistente {
-        Facturacion fac1;
-        Facturacion fac2;
-        Facturacion fac3;
+        calcularFacturacion fac1;
+        calcularFacturacion fac2;
+        calcularFacturacion fac3;
         double coste;
         for (int i = 0; i < 1000; i++) {
             Personas add = new Personas(Integer.toString(i), "", "");
             proyecto.altaPersona(add);
-            fac1 = new Facturacion(new Urgente());
-            fac2 = new Facturacion(new ConsumoInterno());
-            fac3 = new Facturacion(new Descuento());
+            fac1 = new Urgente();
+            fac2 = new ConsumoInterno();
+            fac3 = new Descuento();
             coste = i * 100;
 
 
-            Tareas tarea1 = new Tareas(Integer.toString(-i), "1", new LinkedList<>(), add, 1, new Programa(), new LinkedList<>(),fac1.getCalculoFac(),coste,fac1.calculoFactura(coste));
-            Tareas tarea2 = new Tareas(Integer.toString((i *10) + 1), "2", new LinkedList<>(), add, 1, new Programa(), new LinkedList<>(),fac2.getCalculoFac(),coste,fac2.calculoFactura(coste));
-            Tareas tarea3 = new Tareas(Integer.toString((i *50)+2), "3", new LinkedList<>(), add, 1, new Programa(), new LinkedList<>(),fac3.getCalculoFac(),coste,fac3.calculoFactura(coste));
+            Tareas tarea1 = new Tareas(Integer.toString(-i), "1", new LinkedList<>(), add, 1, new Programa(), new LinkedList<>(),fac1,coste,fac1.calculoFactura(coste));
+            Tareas tarea2 = new Tareas(Integer.toString((i *10) + 1), "2", new LinkedList<>(), add, 1, new Programa(), new LinkedList<>(),fac2,coste,fac2.calculoFactura(coste));
+            Tareas tarea3 = new Tareas(Integer.toString((i *50)+2), "3", new LinkedList<>(), add, 1, new Programa(), new LinkedList<>(),fac3,coste,fac3.calculoFactura(coste));
             proyecto.altaTarea(tarea1);
             proyecto.altaTarea(tarea2);
             proyecto.altaTarea(tarea3);

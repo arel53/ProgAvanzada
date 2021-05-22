@@ -1,5 +1,7 @@
 package Aplicacion.EjecutarMétodos;
 
+import Aplicacion.EjecutarExcepciones.ExisteTitulo;
+import Aplicacion.EjecutarExcepciones.OpcionFueraDeRango;
 import Aplicacion.Excepcion.PersonaNoAñadida;
 import Aplicacion.Excepcion.PersonaNoExistente;
 import Aplicacion.Excepcion.TareaExistente;
@@ -47,8 +49,11 @@ public class AltaTareas {
                     String dni = sn.next();
                     if (dni.equals("q"))
                         break;
-                    personas.add(proyecto.getPersona(dni));
-                }catch (PersonaNoExistente e){
+                    p = proyecto.getPersona(dni);
+                    if(UtilidadesParaListas.insertarEnLista(dni,personas))
+                        personas.add(p);
+                    else throw new PersonaNoAñadida("La persona no ha sido añadida");
+                }catch (PersonaNoExistente | PersonaNoAñadida e){
                     System.out.println(e.getMessage());
                 }
 
@@ -129,19 +134,27 @@ public class AltaTareas {
 
             opcion = sn.nextInt();
 
-            Facturacion facturacion = null;
+            calcularFacturacion facturacion;
 
-            if (opcion == 1)
-                facturacion = new Facturacion(new Urgente());
-            else if (opcion == 2)
-                facturacion = new Facturacion(new ConsumoInterno());
-            else if (opcion == 3)
-                facturacion = new Facturacion(new Descuento());
-            else
-                OpcionFueraDeRango.ejecutarOpcionFueraRango(opcion,3);
+            while(true) {
+                if (opcion == 1) {
+                    facturacion = new Urgente();
+                    break;
+                }
+                else if (opcion == 2) {
+                    facturacion = new ConsumoInterno();
+                    break;
+                }
+                else if (opcion == 3) {
+                    facturacion = new Descuento();
+                    break;
+                }
+                else
+                    OpcionFueraDeRango.ejecutarOpcionFueraRango(opcion, 3);
+            }
 
 
-            Tareas tarea = Tareas.createTarea(titulo, descrip, personas, personaResponsable, prioridad, resultado, etiquetas, facturacion.getCalculoFac(), coste, facturacion.calculoFactura(coste));
+            Tareas tarea = Tareas.createTarea(titulo, descrip, personas, personaResponsable, prioridad, resultado, etiquetas, facturacion, coste, facturacion.calculoFactura(coste));
 
 
             proyecto.altaTarea(tarea);
@@ -162,3 +175,4 @@ public class AltaTareas {
 
     }
 }
+

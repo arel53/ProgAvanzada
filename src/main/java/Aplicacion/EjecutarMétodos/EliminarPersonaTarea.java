@@ -1,5 +1,6 @@
 package Aplicacion.EjecutarMétodos;
 
+import Aplicacion.EjecutarExcepciones.NoEliminarPersona;
 import Aplicacion.Excepcion.*;
 import Aplicacion.Listas.UtilidadesParaListas;
 import Aplicacion.Persona.Personas;
@@ -36,13 +37,12 @@ public class EliminarPersonaTarea{
         }
 
 
-            if(!UtilidadesParaListas.insertarEnLista(dni,tarea.getLista())){
+            NoEliminarPersona.ejecutaNoEliminarPersona(dni,tarea.getLista());
+
                 if(tarea.eliminarPersonaTarea(persona))
                     System.out.println("Se ha eliminado correctamente");
-                else
-                    throw new PersonaNoExistente();
 
-            }
+
             else throw new PersonaNoEliminada("La persona no se ha eliminado ya que no forma parte de la tarea");
         }
         catch (TareaNoExistente | PersonaNoEliminada | PersonaNoExistente e){

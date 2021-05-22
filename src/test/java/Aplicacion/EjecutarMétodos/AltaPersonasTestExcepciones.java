@@ -1,7 +1,9 @@
 package Aplicacion.EjecutarMétodos;
 
+import Aplicacion.EjecutarExcepciones.ExisteTitulo;
+import Aplicacion.EjecutarExcepciones.NoAñadirPersona;
+import Aplicacion.EjecutarExcepciones.OpcionFueraDeRango;
 import Aplicacion.Excepcion.PersonaNoAñadida;
-import Aplicacion.Excepcion.PersonaNoExistente;
 import Aplicacion.Excepcion.TareaExistente;
 import Aplicacion.Persona.Personas;
 import Aplicacion.Proyecto.Proyecto;
@@ -11,7 +13,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;

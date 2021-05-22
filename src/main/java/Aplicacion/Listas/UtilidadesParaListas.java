@@ -26,7 +26,7 @@ public class UtilidadesParaListas implements Serializable {
     }
 
 
-    public static <T extends tieneClave<String> , E> boolean insertarEnLista(E  clave, List<T> objetos){
+    public static <T extends tieneClave<E> , E> boolean insertarEnLista(E  clave, List<T> objetos){
 
         for (T objeto : objetos){
 

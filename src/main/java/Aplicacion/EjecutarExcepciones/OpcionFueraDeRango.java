@@ -1,4 +1,4 @@
-package Aplicacion.EjecutarMétodos;
+package Aplicacion.EjecutarExcepciones;
 
 public class OpcionFueraDeRango{
 
