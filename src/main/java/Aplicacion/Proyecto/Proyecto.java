@@ -13,6 +13,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Vector;
 
 
 public class Proyecto implements Serializable{
@@ -87,6 +88,8 @@ public class Proyecto implements Serializable{
     public String getNombre(){
         return nombre;
     }
+
+
 
 
 }

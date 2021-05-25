@@ -1,5 +1,6 @@
 package Aplicacion.EjecutarMétodos;
 
+import Aplicacion.EjecutarExcepciones.NoAñadirPersona;
 import Aplicacion.Excepcion.PersonaExistente;
 import Aplicacion.Excepcion.PersonaNoAñadida;
 import Aplicacion.Excepcion.PersonaNoExistente;
@@ -36,19 +37,18 @@ public class IntroducirPersonaTarea{
         Personas persona;
 
             persona = proyecto.getPersona(dni);
-            if(persona == null){
-                throw new PersonaNoExistente("\nLa persona no existe en el proyecto");
-            }
-            if (!UtilidadesParaListas.insertarEnLista(dni,tarea.getLista()))
-                throw new PersonaExistente("\nLa persona ya existía");
-            else {
-                tarea.introducirPersonaTarea(persona);
-                System.out.format("\nSe ha añadido correctamente a la persona en la tarea");
-            }
+
+            NoAñadirPersona.ejecutaNoAñadirPersona(dni,tarea.getLista());
+
+            tarea.introducirPersonaTarea(persona);
+            System.out.format("\nSe ha añadido correctamente a la persona en la tarea");
 
 
-        }catch (PersonaExistente | TareaNoExistente | PersonaNoExistente e){
+        }catch (TareaNoExistente | PersonaNoExistente e){
             System.out.format(e.getMessage());
+        }
+        catch (PersonaNoAñadida e1){
+            System.out.format("\nLa persona ya existía");
         }
 
         System.out.format("\n");

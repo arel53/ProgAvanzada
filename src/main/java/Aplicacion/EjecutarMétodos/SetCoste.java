@@ -1,6 +1,6 @@
 package Aplicacion.EjecutarMétodos;
 
-import Aplicacion.Excepcion.TareaExistente;
+import Aplicacion.EjecutarExcepciones.ExisteTitulo;
 import Aplicacion.Excepcion.TareaNoExistente;
 import Aplicacion.Proyecto.Proyecto;
 import Aplicacion.Tareas.Tareas;
@@ -22,9 +22,9 @@ public class SetCoste {
 
         Tareas tareas;
         try {
+
+            ExisteTitulo.ejecutaNoExisteTitulo(titulo,proyecto.listarTareas());
             tareas = proyecto.getTarea(titulo);
-            if (tareas == null)
-                throw new TareaNoExistente();
 
             System.out.format("Introduce el nuevo coste de la tarea --> ");
 

@@ -1,11 +1,11 @@
 package Aplicacion.EjecutarMétodos;
 
 import Aplicacion.EjecutarExcepciones.ExisteTitulo;
+import Aplicacion.EjecutarExcepciones.NoAñadirPersona;
 import Aplicacion.EjecutarExcepciones.OpcionFueraDeRango;
 import Aplicacion.Excepcion.PersonaNoAñadida;
 import Aplicacion.Excepcion.PersonaNoExistente;
 import Aplicacion.Excepcion.TareaExistente;
-import Aplicacion.Listas.UtilidadesParaListas;
 import Aplicacion.Persona.Personas;
 import Aplicacion.Proyecto.Proyecto;
 import Aplicacion.Resultado.*;
@@ -50,10 +50,9 @@ public class AltaTareas {
                     if (dni.equals("q"))
                         break;
                     p = proyecto.getPersona(dni);
-                    if(UtilidadesParaListas.insertarEnLista(dni,personas))
-                        personas.add(p);
-                    else throw new PersonaNoAñadida("La persona no ha sido añadida");
-                }catch (PersonaNoExistente | PersonaNoAñadida e){
+                    NoAñadirPersona.ejecutaNoAñadirPersona(dni, personas);
+                    personas.add(p);
+                } catch (PersonaNoExistente | PersonaNoAñadida e) {
                     System.out.println(e.getMessage());
                 }
 
@@ -77,11 +76,9 @@ public class AltaTareas {
                         personaResponsable = proyecto.getPersona(personaR);
                         break;
                     }
-                }
-                catch (PersonaNoExistente e){
+                } catch (PersonaNoExistente e) {
                     System.out.println(e.getMessage());
                 }
-
 
 
             }
@@ -100,7 +97,7 @@ public class AltaTareas {
 
             System.out.format("\nIndica el resultado esperado \n1. Documentación\n2. Programa\n3. Biblioteca\n4. Pag. Web\n--> ");
             int opcion = sn.nextInt();
-            Resultado resultado=null;
+            Resultado resultado = null;
 
 
             if (opcion == 1)
@@ -112,7 +109,7 @@ public class AltaTareas {
                 resultado = new Biblioteca(id, horas, tipo);
             else if (opcion == 4)
                 resultado = new PagWeb(id, horas, tipo);
-            else OpcionFueraDeRango.ejecutarOpcionFueraRango(opcion,4);
+            else OpcionFueraDeRango.ejecutarOpcionFueraRango(opcion, 4);
 
             System.out.format("\nIndica la etiqueta que quieres añadir (q si has terminado) --> ");
             sn.nextLine();
@@ -136,20 +133,17 @@ public class AltaTareas {
 
             calcularFacturacion facturacion;
 
-            while(true) {
+            while (true) {
                 if (opcion == 1) {
                     facturacion = new Urgente();
                     break;
-                }
-                else if (opcion == 2) {
+                } else if (opcion == 2) {
                     facturacion = new ConsumoInterno();
                     break;
-                }
-                else if (opcion == 3) {
+                } else if (opcion == 3) {
                     facturacion = new Descuento();
                     break;
-                }
-                else
+                } else
                     OpcionFueraDeRango.ejecutarOpcionFueraRango(opcion, 3);
             }
 
@@ -158,7 +152,6 @@ public class AltaTareas {
 
 
             proyecto.altaTarea(tarea);
-
 
 
             System.out.format("\nEl calculo de la facturación es de %1.2f euros", tarea.getFacturacion());

@@ -77,4 +77,12 @@ public class Personas implements tieneLista<Tareas>,tieneClave<String>, Serializ
     public String getClave() {
         return dni;
     }
+
+    public LinkedList<String> getInfoPersonas(){
+        LinkedList<String> vector = new LinkedList<>();
+        vector.add(getClave());
+        vector.add(getNombre());
+        vector.add(getCorreo());
+        return vector;
+    }
 }
