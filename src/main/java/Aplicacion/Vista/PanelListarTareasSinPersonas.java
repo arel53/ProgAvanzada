@@ -24,7 +24,7 @@ public class PanelListarTareasSinPersonas {
 
         ventana.getContentPane().add(panel);
 
-        ventana.setBounds(100, 100, 450, 300);
+        ventana.setBounds(100, 100, 1250, 300);
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
         areaDatosLista.setEditable(false);

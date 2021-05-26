@@ -164,14 +164,12 @@ public class PanelAltaTarea {
         nHoras.setText("");
         titulo.setText("");
         descripcion.setText("");
-        personas.setText("");
         responsable.setText("");
         prioridad.setText("");
         idResultado.setText("");
         fechaCreacion.setText("");
         //tipoFac.setText("");
         coste.setText("");
-        etiquetas.setText("");
         resultado.setText("");
         tipo.setText("");
     }

@@ -89,6 +89,7 @@ public class PanelPersonas extends JPanel{
     }
 
     public void actualizar(){
+
         StringBuilder datos =modelo.textoPersonas(modelo.getListarPersonas());
         rellenarArea(datos);
     }

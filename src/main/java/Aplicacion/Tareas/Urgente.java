@@ -12,4 +12,8 @@ public class Urgente implements calcularFacturacion,Serializable {
         return coste * SOBRE;
 
     }
+    @Override
+    public String toString(){
+        return "Urgente";
+    }
 }

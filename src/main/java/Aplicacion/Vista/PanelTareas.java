@@ -1,9 +1,14 @@
 package Aplicacion.Vista;
 
 import Aplicacion.Controlador.Controlador;
+import Aplicacion.Excepcion.PersonaNoAñadida;
+import Aplicacion.Excepcion.PersonaNoEliminada;
+import Aplicacion.Excepcion.PersonaNoExistente;
+import Aplicacion.Excepcion.TareaNoExistente;
 import Aplicacion.Modelo.Modelo;
 
 import javax.swing.*;
+import javax.swing.plaf.PopupMenuUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -42,6 +47,7 @@ public class PanelTareas extends JPanel{
         JButton eliminarPersona = new JButton("Eliminar persona");
         JButton listarTareasSinPersonas = new JButton("Listar tareas sin personas");
         JButton cambiarCosteTarea = new JButton("Cambiar coste");
+
 
         JPanel panel = new JPanel();
         panel.add(idTarea);
@@ -87,21 +93,24 @@ public class PanelTareas extends JPanel{
         finalizarTarea.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                finalizarTarea();
+                vaciar();
             }
         });
 
         introducirPersona.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                insertarPersonaTarea();
+                vaciar();
             }
         });
 
         eliminarPersona.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+            eliminarPersonaTarea();
+            vaciar();
             }
         });
         listarTareasSinPersonas.addActionListener(new ActionListener() {
@@ -114,6 +123,8 @@ public class PanelTareas extends JPanel{
         cambiarCosteTarea.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                cambiarCosteTarea();
+                vaciar();
 
             }
         });
@@ -131,5 +142,48 @@ public class PanelTareas extends JPanel{
     public void actualizar(){
         StringBuilder datos = modelo.textoTareas(modelo.listarTareas());
         rellenarArea(datos);
+    }
+    private void insertarPersonaTarea(){
+
+        try {
+            controlador.insertarPersonaTarea(textoIdTarea.getText(),textoDni.getText());
+        }
+        catch (PersonaNoAñadida | PersonaNoExistente | TareaNoExistente e){
+            new VentanaEmergente(vista,e.getMessage(),true);
+        }
+
+    }
+
+   private void eliminarPersonaTarea(){
+
+        try {
+            controlador.eliminarPersonaTarea(textoIdTarea.getText(),textoDni.getText());
+        }
+        catch (TareaNoExistente | PersonaNoEliminada | PersonaNoExistente  e ){
+            new VentanaEmergente(vista,e.getMessage(),true);
+        }
+    }
+
+    private void finalizarTarea(){
+        try {
+            controlador.finalizarTarea(textoIdTarea.getText());
+        }
+        catch (TareaNoExistente e ){
+            new VentanaEmergente(vista,e.getMessage(),true);
+        }
+    }
+
+    private void cambiarCosteTarea(){
+        try {
+            controlador.cambiarCosteTarea(textoIdTarea.getText(),textoCoste.getText());
+        }
+        catch (TareaNoExistente e ){
+            new VentanaEmergente(vista,e.getMessage(),true);
+        }
+    }
+    public void vaciar() {
+        textoDni.setText("");
+        textoIdTarea.setText("");
+        textoCoste.setText("");
     }
 }

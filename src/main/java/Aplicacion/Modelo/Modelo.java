@@ -1,7 +1,13 @@
 package Aplicacion.Modelo;
 
+import Aplicacion.EjecutarExcepciones.ExisteTitulo;
+import Aplicacion.EjecutarExcepciones.NoAñadirPersona;
+import Aplicacion.EjecutarExcepciones.NoEliminarPersona;
 import Aplicacion.EjecutarMétodos.ListadoPersonasNoResponsablesTareas;
 import Aplicacion.Excepcion.PersonaNoAñadida;
+import Aplicacion.Excepcion.PersonaNoEliminada;
+import Aplicacion.Excepcion.PersonaNoExistente;
+import Aplicacion.Excepcion.TareaNoExistente;
 import Aplicacion.Listas.UtilidadesParaListas;
 import Aplicacion.Persona.Personas;
 import Aplicacion.Proyecto.Proyecto;

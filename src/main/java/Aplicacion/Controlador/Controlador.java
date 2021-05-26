@@ -1,8 +1,12 @@
 package Aplicacion.Controlador;
 
 import Aplicacion.Excepcion.PersonaNoAñadida;
+import Aplicacion.Excepcion.PersonaNoEliminada;
+import Aplicacion.Excepcion.PersonaNoExistente;
+import Aplicacion.Excepcion.TareaNoExistente;
 import Aplicacion.Modelo.Modelo;
 import Aplicacion.Persona.Personas;
+import Aplicacion.Proyecto.Proyecto;
 import Aplicacion.Vista.Vista;
 
 import java.util.List;
