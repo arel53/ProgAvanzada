@@ -119,9 +119,10 @@ public class Modelo implements implementacionModelo{
         return proyecto.listarTareas();
     }
 
-    public void insertarPersonaTarea(String id, String DNI) throws PersonaNoExistente, TareaNoExistente {
+    public void insertarPersonaTarea(String id, String DNI) throws PersonaNoExistente, TareaNoExistente, PersonaNoAñadida {
         Personas persona= proyecto.getPersona(DNI);
         Tareas tarea= proyecto.getTarea(id);
+        NoAñadirPersona.ejecutaNoAñadirPersona(DNI,tarea.getLista());
         tarea.introducirPersonaTarea(persona);
         vista.actualizar();
 

@@ -27,7 +27,7 @@ public class Controlador implements implementacionControlador{
     }
     @Override
     public void insertarPersona(String nombre, String DNI, String correo) throws PersonaNoAñadida {
-        Personas persona = null;
+        Personas persona;
         persona = Personas.createPersona(DNI.toUpperCase(Locale.ROOT),nombre,correo,modelo.getProyecto().listarPersonas());
         modelo.insertarPersona(persona);
     }
