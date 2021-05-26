@@ -37,9 +37,8 @@ public class Vista extends WindowAdapter implements implementacionVista {
 
         ventana.add(pestañas);
 
-        ventana.pack();
 
-        ventana.setLocationRelativeTo(null);
+
         ventana.setVisible(true);
 
         ventana.addWindowListener(new WindowAdapter() {
@@ -51,12 +50,17 @@ public class Vista extends WindowAdapter implements implementacionVista {
         });
 
 
+        ventana.pack();
+        ventana.setLocationRelativeTo(null);
+
     }
 
+    @Override
     public void setModelo(Modelo modelo){
         this.modelo = modelo;
     }
 
+    @Override
     public void setControlador(Controlador controlador){
         this.controlador = controlador;
     }

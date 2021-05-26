@@ -5,6 +5,7 @@ import Aplicacion.Listas.tieneLista;
 import Aplicacion.Persona.Personas;
 import Aplicacion.Resultado.Resultado;
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 import Aplicacion.Listas.tieneClave;
 
@@ -64,8 +65,8 @@ public class Tareas implements tieneLista<Personas>,tieneClave<String>,Serializa
     }
 
     public String toString(){
-        return "Título: " + getClave() + "\nPersonas: "+ getLista() + "\nResponsable: "+getResponsable() +"\n¿Finalizada?: " + getFinalizado() + "\n Id del resultado: " + getResultado().getIdResultado() + "\nFecha creación: "+ getCreacion() +
-                "\nFecha finalización: " + getFechaFinalizacion()+ "\nCoste: "+ getCoste() + "€\nFacturación: "+ getFacturacion() +"€\n\n";
+        return "Título: " + getClave() +"\nDescripción: "+getDescripcion()+ "\nPersonas: "+ getLista() + "\nResponsable: "+getResponsable() +"\n¿Finalizada?: " + getFinalizado() + "\n Id del resultado: " + getResultado().getIdResultado() +"\nPrioridad: "+getPrioridad()+ "\nFecha creación: "+ getCreacion() +
+                "\nFecha finalización: " + getFechaFinalizacion()+ "\nTipo facturación: " + getTipoFacturacion().toString() + "\nCoste: "+ getCoste() + "€\nFacturación: "+ getFacturacion() +"€"+"\nEtiquetas: "+ getEtiquetas().toString()+"\n\n";
     }
 
     public static Tareas createTarea(String titulo, String descripcion, List<Personas> personas, Personas responsable, int prioridad, Resultado resultado, List<String> etiquetas, calcularFacturacion calculofacturacion, double coste,double facturacion){
@@ -81,9 +82,6 @@ public class Tareas implements tieneLista<Personas>,tieneClave<String>,Serializa
         return informacion.resultado;
     }
 
-    public boolean isFinalizado() {
-        return informacion.finalizado;
-    }
 
     public List<String> getEtiquetas() {
         return informacion.etiquetas;
@@ -134,11 +132,47 @@ public class Tareas implements tieneLista<Personas>,tieneClave<String>,Serializa
         this.coste = coste;
     }
 
+    public calcularFacturacion getTipoFacturacion(){
+        return calculofacturacion;
+    }
+
     public void setFacturacion(double facturacion){
         this.facturacion = facturacion;
     }
 
     public calcularFacturacion getCalcularFacturacion(){
         return calculofacturacion;
+    }
+
+    public List<String> getInfoTareas(){
+        List<String> tareas = new LinkedList<>();
+        tareas.add(getClave());
+        tareas.add(getDescripcion());
+        tareas.add(tratarListaPersonas(getLista()));
+        tareas.add(getResponsable().getNombre());
+        if (getFinalizado())
+            tareas.add("Finalizado");
+        else
+            tareas.add("No finalizado");
+        tareas.add(getResultado().getIdResultado());
+        tareas.add(Integer.toString(getPrioridad()));
+        tareas.add(getCreacion().toString());
+        tareas.add(getFechaFinalizacion().toString());
+        tareas.add(getTipoFacturacion().toString());
+        tareas.add(Double.toString(getCoste()));
+        tareas.add(Double.toString(getFacturacion()));
+        tareas.add(getEtiquetas().toString());
+
+        //titulo,descrip,personas,responable,finalizada,idresul,prioridad,creac,finaliz,tipofac,coste,fac,etiquetas
+
+     return tareas;
+    }
+
+    private String tratarListaPersonas(List<Personas> personas){
+        StringBuilder tratado = new StringBuilder();
+        for (Personas personas1: personas){
+            tratado.append(personas1.getClave()).append(" ");
+        }
+        return tratado.toString();
     }
 }

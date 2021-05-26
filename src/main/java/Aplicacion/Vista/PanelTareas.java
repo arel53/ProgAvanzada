@@ -16,7 +16,7 @@ public class PanelTareas extends JPanel{
     JTextField textoDni;
     JTextField textoIdTarea;
     JTextField textoCoste;
-    private JTextArea zonaTextoTareas = new JTextArea(25, 10);
+    private JTextArea zonaTextoTareas = new JTextArea(25, 40);
 
 
 
@@ -63,12 +63,15 @@ public class PanelTareas extends JPanel{
         Container contenedor = new Container();
         contenedor.setLayout(new BoxLayout(contenedor,BoxLayout.PAGE_AXIS));
         contenedor.add(panel);
+        actualizar();
 
         parteDatos.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         parteDatos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         contenedor.add(parteDatos);
 
         add(contenedor);
+        vista.setSize(new Dimension(500,500));
+        vista.setLocationRelativeTo(null);
 
 
 
@@ -104,7 +107,7 @@ public class PanelTareas extends JPanel{
         listarTareasSinPersonas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new PanelListarTareasSinPersonas(controlador);
+                new PanelListarTareasSinPersonas(controlador, modelo);
             }
         });
 
@@ -119,7 +122,14 @@ public class PanelTareas extends JPanel{
 
     }
 
-    public void actualizar(){
+    public void rellenarArea(StringBuilder sb){
+        zonaTextoTareas.setText("");
+        zonaTextoTareas.append(String.valueOf(sb));
 
+    }
+
+    public void actualizar(){
+        StringBuilder datos = modelo.textoTareas(modelo.listarTareas());
+        rellenarArea(datos);
     }
 }

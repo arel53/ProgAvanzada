@@ -14,4 +14,10 @@ public class Descuento implements calcularFacturacion,Serializable {
 
         return coste * DESCUENTO;
     }
+
+    @Override
+    public String toString(){
+        return "Descuento";
+    }
+
 }

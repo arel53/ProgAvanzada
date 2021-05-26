@@ -12,4 +12,8 @@ public class ConsumoInterno implements calcularFacturacion,Serializable{
         return coste;
 
     }
+    @Override
+    public String toString(){
+        return "Consumo Interno";
+    }
 }
