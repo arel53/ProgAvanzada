@@ -63,8 +63,7 @@ public class PanelPersonas extends JPanel{
 
         JPanel personas = new JPanel();
 
-        /*personas.add(dni);
-        personas.add(dniPersonas);*/
+
 
 
         contenedor = new Container();

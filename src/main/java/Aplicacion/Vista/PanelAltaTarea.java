@@ -84,6 +84,10 @@ public class PanelAltaTarea {
         JCheckBox documentacion = new JCheckBox("Documentación");
         JCheckBox programa = new JCheckBox("Programa");
         JCheckBox pagWeb = new JCheckBox("Pag Web");
+        biblioteca.setActionCommand("BIBLIOTECA");
+        documentacion.setActionCommand("DOCUMENTACION");
+        programa.setActionCommand("PROGRAMA");
+        pagWeb.setActionCommand("PAGWEB");
         grupo2.add(biblioteca);
         grupo2.add(documentacion);
         grupo2.add(programa);
@@ -166,6 +170,8 @@ public class PanelAltaTarea {
             }
         });
 
+
+
         etiquetas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -209,15 +215,14 @@ public class PanelAltaTarea {
 
 
 
-
     public void vaciar() {
-        nHoras.setText("");
         titulo.setText("");
         descripcion.setText("");
         responsable.setText("");
         prioridad.setText("");
         idResultado.setText("");
-        fechaCreacion.setText("");
+        nHoras.setText("");
+        //fechaCreacion.setText("");
         //tipoFac.setText("");
         coste.setText("");
         tipo.setText("");
@@ -243,6 +248,11 @@ public class PanelAltaTarea {
 
         //titulo,descrip,personas,responable,prioridad,idresul,nhoras,,interno/comer,creac,tipofac,coste,fac,etiquetas
     }
+
+
+
+
+
 
 
 }
