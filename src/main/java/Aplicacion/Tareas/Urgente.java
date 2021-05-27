@@ -14,6 +14,6 @@ public class Urgente implements calcularFacturacion,Serializable {
     }
     @Override
     public String toString(){
-        return "Urgente";
+        return "Urgente                 ";
     }
 }

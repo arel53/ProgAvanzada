@@ -6,9 +6,7 @@ import Aplicacion.Modelo.Modelo;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -21,6 +19,8 @@ public class Vista extends WindowAdapter implements implementacionVista {
     private PanelPersonas vistaPersonas;
     private PanelTareas vistaTareas;
     File f;
+    private JButton cambiarProyecto;
+
 
 
     public void run(){
@@ -30,12 +30,15 @@ public class Vista extends WindowAdapter implements implementacionVista {
         JTabbedPane pestañas = new JTabbedPane();
         vistaPersonas = new PanelPersonas(modelo,ventana,controlador);
         vistaTareas = new PanelTareas(modelo,ventana,controlador);
+        cambiarProyecto = new JButton("Cambiar de proyecto");
 
 
         pestañas.add("Personas",vistaPersonas);
         pestañas.add("Tareas",vistaTareas);
 
         ventana.add(pestañas);
+        vistaPersonas.addComponente(cambiarProyecto);
+        actualizar();
 
 
 
@@ -46,6 +49,15 @@ public class Vista extends WindowAdapter implements implementacionVista {
             public void windowClosing(WindowEvent e) {
                 cerrarGuardarFichero(f);
                 System.exit(0);
+            }
+        });
+
+        cambiarProyecto.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cerrarGuardarFichero(f);
+                ventana.dispose();
+                run();
             }
         });
 
@@ -108,6 +120,10 @@ public class Vista extends WindowAdapter implements implementacionVista {
         catch (IOException e){
             new VentanaEmergente(ventana,e.getMessage(),true);
         }
+    }
+
+    public void noExistePersona(String dni){
+        new VentanaEmergente(ventana,"La persona "+ dni+ "no existe", true);
     }
 
 }

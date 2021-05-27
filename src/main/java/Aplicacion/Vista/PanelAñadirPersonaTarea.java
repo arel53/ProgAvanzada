@@ -47,6 +47,10 @@ public class PanelAñadirPersonaTarea {
         personasQueVasAAñadir.setText(Integer.toString(sizePersonas()));
     }
 
+    public List<String> getPersonas(){
+        return personas;
+    }
+
     public PanelAñadirPersonaTarea(JTextField personasQueVasAAñadir){
         this.personasQueVasAAñadir = personasQueVasAAñadir;
         ventana = new JFrame("Añadir persona");

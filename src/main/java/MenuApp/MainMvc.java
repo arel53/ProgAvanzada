@@ -15,7 +15,7 @@ public class MainMvc {
         controlador.setModelo(modelo);
         vista.setControlador(controlador);
         vista.setModelo(modelo);
-        modelo.setProyecto(Proyecto.iniciarProyecto("1.bin"));
         vista.run();
     }
+
 }

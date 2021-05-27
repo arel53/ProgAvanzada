@@ -17,7 +17,7 @@ public class Descuento implements calcularFacturacion,Serializable {
 
     @Override
     public String toString(){
-        return "Descuento";
+        return "Descuento          ";
     }
 
 }

@@ -4,15 +4,12 @@ import Aplicacion.EjecutarExcepciones.ExisteTitulo;
 import Aplicacion.EjecutarExcepciones.NoAñadirPersona;
 import Aplicacion.EjecutarExcepciones.NoEliminarPersona;
 import Aplicacion.EjecutarMétodos.ListadoPersonasNoResponsablesTareas;
-import Aplicacion.Excepcion.PersonaNoAñadida;
-import Aplicacion.Excepcion.PersonaNoEliminada;
-import Aplicacion.Excepcion.PersonaNoExistente;
-import Aplicacion.Excepcion.TareaNoExistente;
+import Aplicacion.Excepcion.*;
 import Aplicacion.Listas.UtilidadesParaListas;
 import Aplicacion.Persona.Personas;
 import Aplicacion.Proyecto.Proyecto;
-import Aplicacion.Tareas.Tareas;
-import Aplicacion.Tareas.calcularFacturacion;
+import Aplicacion.Resultado.*;
+import Aplicacion.Tareas.*;
 import Aplicacion.Vista.Vista;
 
 import java.io.*;
@@ -77,6 +74,8 @@ public class Modelo implements implementacionModelo{
                 int i = 0;
                 for (String string : datosTareas){
                     datosTratados.append(string).append("\t\t\t");
+                    if (i == 10)
+                        datosTratados.append("\t");
                     i++;
                     /*if (i == 9)
                         datosTratados.append("\t");
@@ -130,11 +129,9 @@ public class Modelo implements implementacionModelo{
     public void eliminarPersonaTarea(String id, String DNI) throws PersonaNoExistente, TareaNoExistente, PersonaNoEliminada {
         Personas persona= proyecto.getPersona(DNI);
         Tareas tarea= proyecto.getTarea(id);
-        tarea.eliminarPersonaTarea(persona);
         NoEliminarPersona.ejecutaNoEliminarPersonaResponsable(persona, tarea.getResponsable());
-
-
         NoEliminarPersona.ejecutaNoEliminarPersona(DNI, tarea.getLista());
+        tarea.eliminarPersonaTarea(persona);
         vista.actualizar();
     }
 
@@ -157,5 +154,55 @@ public class Modelo implements implementacionModelo{
 
         vista.actualizar();
 
+    }
+    public void altaTarea( String titulo, String descripcion, List<String> personas, String responsable, String prioridad, String idResultado,String nHoras, String tipoResultado ,String resultadoEsperado ,List<String> etiquetas,String coste, String tipoFac ) throws PersonaNoExistente, PersonaNoAñadida, TareaExistente {
+        List<Personas> personasFinales = new LinkedList<>();
+
+        
+        Personas p;
+        String s1 = "";
+        try {
+            for (String s : personas) {
+                s1 = s;
+                p = proyecto.getPersona(s);
+                NoAñadirPersona.ejecutaNoAñadirPersona(s, personasFinales);
+                personasFinales.add(p);
+            }
+        }catch (PersonaNoExistente e ){
+            vista.noExistePersona(s1);
+        }
+
+
+        Personas personaResponsable = proyecto.getPersona(responsable);
+
+        Resultado resultado;
+
+        if (resultadoEsperado.equals("DOCUMENTACION"))
+            resultado = new Documentacion(idResultado, Integer.parseInt(nHoras), tipoResultado);
+        else if (resultadoEsperado.equals("PROGRAMA"))
+            resultado = new Programa(idResultado, Integer.parseInt(nHoras), tipoResultado);
+        else if (resultadoEsperado.equals("PAGWEB"))
+            resultado = new PagWeb(idResultado, Integer.parseInt(nHoras), tipoResultado);
+        else
+            resultado = new Biblioteca(idResultado, Integer.parseInt(nHoras), tipoResultado);
+
+
+
+        calcularFacturacion facturacion;
+        if(tipoFac.equals("URGENTE")){
+            facturacion=new Urgente();
+        }
+        else if (tipoFac.equals("DESCUENTO")){
+           facturacion=new Descuento();
+        }
+        else {
+           facturacion=new ConsumoInterno();
+        }
+
+
+        Tareas tarea = Tareas.createTarea(titulo,descripcion,personasFinales,personaResponsable,Integer.parseInt(prioridad),resultado,etiquetas,facturacion,Double.parseDouble(coste),facturacion.calculoFactura(Double.parseDouble(coste)));
+
+        proyecto.altaTarea(tarea);
+        vista.actualizar();
     }
 }

@@ -17,6 +17,7 @@ public class PanelPersonas extends JPanel{
     private Modelo modelo;
     private JTextArea zonaTextoPersonas = new JTextArea(20,80);
     private JTextField dniPersonas;
+    private Container contenedor;
 
 
     public PanelPersonas(Modelo modelo, JFrame vista, Controlador controlador){
@@ -58,13 +59,15 @@ public class PanelPersonas extends JPanel{
         });
 
 
+
+
         JPanel personas = new JPanel();
 
         /*personas.add(dni);
         personas.add(dniPersonas);*/
 
 
-        Container contenedor = new Container();
+        contenedor = new Container();
         contenedor.setLayout(new BoxLayout(contenedor, BoxLayout.PAGE_AXIS));
         JPanel panelOpciones = new JPanel();
 
@@ -92,5 +95,8 @@ public class PanelPersonas extends JPanel{
 
         StringBuilder datos =modelo.textoPersonas(modelo.getListarPersonas());
         rellenarArea(datos);
+    }
+    public void addComponente(JButton boton){
+        contenedor.add(boton);//NO TE ESCUCHOOOOOOOOOOOOOOOO
     }
 }

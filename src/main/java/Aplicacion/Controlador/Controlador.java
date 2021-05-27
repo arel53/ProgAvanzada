@@ -1,14 +1,13 @@
 package Aplicacion.Controlador;
 
-import Aplicacion.Excepcion.PersonaNoAñadida;
-import Aplicacion.Excepcion.PersonaNoEliminada;
-import Aplicacion.Excepcion.PersonaNoExistente;
-import Aplicacion.Excepcion.TareaNoExistente;
+import Aplicacion.Excepcion.*;
 import Aplicacion.Modelo.Modelo;
 import Aplicacion.Persona.Personas;
 import Aplicacion.Proyecto.Proyecto;
 import Aplicacion.Vista.Vista;
 
+import java.nio.charset.StandardCharsets;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
@@ -56,9 +55,12 @@ public class Controlador implements implementacionControlador{
 
 
 
-    /*public void insertarTarea(String titulo, String descripcion, String titulo, String descripcion, String personas, String responsable, String prioridad, String resultado, String etiquetas, String calculofacturacion, double coste, double facturacion){
+    public void altaTarea( String titulo, String descripcion, List<String> personas, String responsable, String prioridad, String idResultado,String nHoras, String tipoResultado ,String resultadoEsperado ,List<String> etiquetas,String coste, String tipoFactura ) throws TareaExistente, PersonaNoAñadida, PersonaNoExistente {
 
-    }*/
+        modelo.altaTarea(titulo,descripcion,personas,responsable,prioridad,idResultado,nHoras,tipoResultado,resultadoEsperado,etiquetas,coste,tipoFactura);
+
+        //titulo,descrip,personas,responable,idresul,prioridad,creac,tipofac,coste,fac,etiquetas
+    }
 
 
 }

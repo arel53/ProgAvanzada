@@ -39,6 +39,10 @@ public class AñadirEtiquetas {
         etiquetasQueVasAAñadir.setText(Integer.toString(sizeEtiquetas()));
     }
 
+    public List<String> getEtiquetas(){
+        return etiquetas;
+    }
+
     public void abrirVentana(){
         ventana.setVisible(true);
     }
