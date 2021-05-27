@@ -37,7 +37,8 @@ public class Modelo implements implementacionModelo{
 
     public void insertarPersona(Personas persona) throws PersonaNoAñadida {
         proyecto.altaPersona(persona);
-        vista.actualizar();
+        //vista.actualizar();
+        vista.actualizarTablas();
 
     }
 
@@ -74,8 +75,6 @@ public class Modelo implements implementacionModelo{
                 int i = 0;
                 for (String string : datosTareas){
                     datosTratados.append(string).append("\t\t\t");
-                    if (i == 10)
-                        datosTratados.append("\t");
                     i++;
                     /*if (i == 9)
                         datosTratados.append("\t");
@@ -124,6 +123,7 @@ public class Modelo implements implementacionModelo{
         NoAñadirPersona.ejecutaNoAñadirPersona(DNI,tarea.getLista());
         tarea.introducirPersonaTarea(persona);
         vista.actualizar();
+        vista.actualizarTablas();
 
     }
     public void eliminarPersonaTarea(String id, String DNI) throws PersonaNoExistente, TareaNoExistente, PersonaNoEliminada {
@@ -133,12 +133,14 @@ public class Modelo implements implementacionModelo{
         NoEliminarPersona.ejecutaNoEliminarPersona(DNI, tarea.getLista());
         tarea.eliminarPersonaTarea(persona);
         vista.actualizar();
+        vista.actualizarTablas();
     }
 
     public void finalizarTarea(String id) throws TareaNoExistente{
         Tareas tarea=proyecto.getTarea(id);
         tarea.finalizarTarea();
         vista.actualizar();
+        vista.actualizarTablas();
 
     }
 
@@ -153,6 +155,7 @@ public class Modelo implements implementacionModelo{
         tarea.setFacturacion(calculoFacturacion.calculoFactura(Double.parseDouble(coste)));
 
         vista.actualizar();
+        vista.actualizarTablas();
 
     }
     public void altaTarea( String titulo, String descripcion, List<String> personas, String responsable, String prioridad, String idResultado,String nHoras, String tipoResultado ,String resultadoEsperado ,List<String> etiquetas,String coste, String tipoFac ) throws PersonaNoExistente, PersonaNoAñadida, TareaExistente {
@@ -204,5 +207,15 @@ public class Modelo implements implementacionModelo{
 
         proyecto.altaTarea(tarea);
         vista.actualizar();
+        vista.actualizarTablas();
+    }
+
+    public Tabla crearTablaPersonas(){
+        ModeloTablaPersonas modeloTablaPersonas = new ModeloTablaPersonas(proyecto.listarPersonas());
+        return new Tabla(modeloTablaPersonas);
+    }
+
+    public ModeloTablaPersonas actualizarTabla(){
+        return new ModeloTablaPersonas(proyecto.listarPersonas());
     }
 }

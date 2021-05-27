@@ -2,6 +2,7 @@ package Aplicacion.Vista;
 
 import Aplicacion.Controlador.Controlador;
 import Aplicacion.Modelo.Modelo;
+import Aplicacion.Modelo.Tabla;
 
 import javax.accessibility.Accessible;
 import javax.management.remote.JMXConnectorFactory;
@@ -18,6 +19,8 @@ public class PanelPersonas extends JPanel{
     private JTextArea zonaTextoPersonas = new JTextArea(20,80);
     private JTextField dniPersonas;
     private Container contenedor;
+    JPanel panelOpciones;
+    Tabla tabla;
 
 
     public PanelPersonas(Modelo modelo, JFrame vista, Controlador controlador){
@@ -36,12 +39,13 @@ public class PanelPersonas extends JPanel{
 
 
 
-        StringBuilder datos =modelo.textoPersonas(modelo.getListarPersonas());
+       // StringBuilder datos =modelo.textoPersonas(modelo.getListarPersonas());
 
-        JScrollPane panel = new JScrollPane(zonaTextoPersonas);
+        /*JScrollPane panel = new JScrollPane(zonaTextoPersonas);
         panel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         panel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        rellenarArea(datos);
+        rellenarArea(datos);*/
+
 
 
         insertarPersona.addActionListener(new ActionListener() {
@@ -68,16 +72,19 @@ public class PanelPersonas extends JPanel{
 
         contenedor = new Container();
         contenedor.setLayout(new BoxLayout(contenedor, BoxLayout.PAGE_AXIS));
-        JPanel panelOpciones = new JPanel();
+        panelOpciones = new JPanel();
 
         panelOpciones.add(personas);
         panelOpciones.add(insertarPersona);
         panelOpciones.add(listarPersonasnoResponsables);
 
         contenedor.add(panelOpciones);
-        contenedor.add(panel);
-        add(contenedor);
+        //contenedor.add(panel);
 
+        tabla = modelo.crearTablaPersonas();
+        contenedor.add(new JScrollPane(tabla));
+        add(contenedor);
+        actualizarTabla();
         vista.pack();
         zonaTextoPersonas.setForeground(Color.BLACK);
         zonaTextoPersonas.setEditable(false);
@@ -96,6 +103,10 @@ public class PanelPersonas extends JPanel{
         rellenarArea(datos);
     }
     public void addComponente(JButton boton){
-        contenedor.add(boton);//NO TE ESCUCHOOOOOOOOOOOOOOOO
+        panelOpciones.add(boton,BorderLayout.NORTH);
+    }
+
+    public void actualizarTabla(){
+        tabla.setModel(modelo.actualizarTabla());
     }
 }

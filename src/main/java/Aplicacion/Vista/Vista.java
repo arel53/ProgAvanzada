@@ -2,6 +2,7 @@ package Aplicacion.Vista;
 
 import Aplicacion.Controlador.Controlador;
 import Aplicacion.Modelo.Modelo;
+import Aplicacion.Proyecto.Proyecto;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -37,8 +38,8 @@ public class Vista extends WindowAdapter implements implementacionVista {
         pestañas.add("Tareas",vistaTareas);
 
         ventana.add(pestañas);
-        vistaPersonas.addComponente(cambiarProyecto);
         actualizar();
+        vistaPersonas.addComponente(cambiarProyecto);
 
 
 
@@ -57,7 +58,7 @@ public class Vista extends WindowAdapter implements implementacionVista {
             public void actionPerformed(ActionEvent e) {
                 cerrarGuardarFichero(f);
                 ventana.dispose();
-                run();
+                abrirNuevoProyecto();
             }
         });
 
@@ -83,6 +84,9 @@ public class Vista extends WindowAdapter implements implementacionVista {
         vistaPersonas.actualizar();
         vistaTareas.actualizar();
     }
+    public void actualizarTablas(){
+        vistaPersonas.actualizarTabla();
+    }
 
     public File ventanaAbrirFichero(){
 
@@ -101,6 +105,7 @@ public class Vista extends WindowAdapter implements implementacionVista {
                 }
                 catch (FileNotFoundException e1){
                     new VentanaEmergente(ventana,"Se va a crear un nuevo fichero ya que el introducido no existe", true);
+                    modelo.setProyecto(Proyecto.iniciarProyecto(f.toString()));
                 }catch (Exception e2){
                     new VentanaEmergente(ventana,e2.getMessage(),true);
                 }
@@ -120,6 +125,23 @@ public class Vista extends WindowAdapter implements implementacionVista {
         catch (IOException e){
             new VentanaEmergente(ventana,e.getMessage(),true);
         }
+    }
+
+    public static void abrirNuevoProyecto(){
+        Vista vista = new Vista();
+        Modelo modelo = new Modelo();
+        Controlador controlador = new Controlador();
+        vista.setControlador(controlador);
+        vista.setModelo(modelo);
+        modelo.setVista(vista);
+        controlador.setVista(vista);
+        controlador.setModelo(modelo);
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                vista.run();
+            }
+        });
     }
 
     public void noExistePersona(String dni){

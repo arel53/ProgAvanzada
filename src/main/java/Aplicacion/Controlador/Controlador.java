@@ -2,6 +2,7 @@ package Aplicacion.Controlador;
 
 import Aplicacion.Excepcion.*;
 import Aplicacion.Modelo.Modelo;
+import Aplicacion.Modelo.Tabla;
 import Aplicacion.Persona.Personas;
 import Aplicacion.Proyecto.Proyecto;
 import Aplicacion.Vista.Vista;
@@ -61,6 +62,7 @@ public class Controlador implements implementacionControlador{
 
         //titulo,descrip,personas,responable,idresul,prioridad,creac,tipofac,coste,fac,etiquetas
     }
+
 
 
 }
