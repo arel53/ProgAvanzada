@@ -16,7 +16,7 @@ public class PanelPersonas extends JPanel{
     private Controlador controlador;
     private JFrame vista;
     private Modelo modelo;
-    private JTextArea zonaTextoPersonas = new JTextArea(20,80);
+    //private JTextArea zonaTextoPersonas = new JTextArea(20,80);
     private JTextField dniPersonas;
     private Container contenedor;
     JPanel panelOpciones;
@@ -86,22 +86,23 @@ public class PanelPersonas extends JPanel{
         add(contenedor);
         actualizarTabla();
         vista.pack();
-        zonaTextoPersonas.setForeground(Color.BLACK);
-        zonaTextoPersonas.setEditable(false);
+       // zonaTextoPersonas.setForeground(Color.BLACK);
+       // zonaTextoPersonas.setEditable(false);
 
 
     }
 
-    private void rellenarArea(StringBuilder sb){
+    /*private void rellenarArea(StringBuilder sb){
         zonaTextoPersonas.setText("");
         zonaTextoPersonas.append(String.valueOf(sb));
-    }
+    }*/
 
-    public void actualizar(){
+   /* public void actualizar(){
 
         StringBuilder datos =modelo.textoPersonas(modelo.getListarPersonas());
         rellenarArea(datos);
-    }
+    }*/
+
     public void addComponente(JButton boton){
         panelOpciones.add(boton,BorderLayout.NORTH);
     }

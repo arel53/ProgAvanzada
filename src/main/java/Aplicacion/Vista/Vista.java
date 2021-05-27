@@ -81,7 +81,7 @@ public class Vista extends WindowAdapter implements implementacionVista {
 
     public void actualizar(){
 
-        vistaPersonas.actualizar();
+        //vistaPersonas.actualizar();
         vistaTareas.actualizar();
     }
     public void actualizarTablas(){
