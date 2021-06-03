@@ -68,7 +68,7 @@ public class Proyecto implements Serializable{
     public Personas getPersona(String dni) throws PersonaNoExistente {
 
         for (Personas p : personas){
-            if (p.getDni().equals(dni.toLowerCase())){
+            if (p.getDni().equals(dni.toUpperCase())){
                 return p;
             }
         }
