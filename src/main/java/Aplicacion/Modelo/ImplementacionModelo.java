@@ -196,6 +196,8 @@ public class ImplementacionModelo implements Modelo {
             resultado = new Biblioteca(idResultado, Double.parseDouble(nHoras), tipoResultado);
 
 
+
+
         calcularFacturacion facturacion;
         if (tipoFac.equals("URGENTE")) {
             facturacion = new Urgente();
