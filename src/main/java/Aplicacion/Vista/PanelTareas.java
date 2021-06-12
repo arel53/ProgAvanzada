@@ -1,10 +1,12 @@
 package Aplicacion.Vista;
 
 import Aplicacion.Controlador.Controlador;
+import Aplicacion.Controlador.ImplementacionControlador;
 import Aplicacion.Excepcion.PersonaNoAñadida;
 import Aplicacion.Excepcion.PersonaNoEliminada;
 import Aplicacion.Excepcion.PersonaNoExistente;
 import Aplicacion.Excepcion.TareaNoExistente;
+import Aplicacion.Modelo.ImplementacionModelo;
 import Aplicacion.Modelo.Modelo;
 import Aplicacion.Modelo.Tabla;
 
@@ -12,12 +14,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.InputMismatchException;
+import java.util.List;
 
 public class PanelTareas extends JPanel{
 
     Modelo modelo;
     JFrame vista;
-    Controlador controlador;
+    Controlador controladora;
     JTextField textoDni;
     JTextField textoIdTarea;
     JTextField textoCoste;
@@ -25,15 +30,16 @@ public class PanelTareas extends JPanel{
     private Container contenedor;
     Tabla tabla;
     JPanel panelOpciones;
+    PanelAltaTarea panelAltaTarea;
 
 
 
 
-    public PanelTareas(Modelo modelo, JFrame vista, Controlador controlador){
+    public PanelTareas(Modelo modelo, JFrame vista, Controlador controladora){
 
         this.modelo = modelo;
         this.vista = vista;
-        this.controlador = controlador;
+        this.controladora = controladora;
 
         JLabel idTarea = new JLabel("Id tarea: ");
         textoIdTarea = new JTextField(5);
@@ -89,7 +95,7 @@ public class PanelTareas extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                new PanelAltaTarea(controlador);
+                panelAltaTarea = new PanelAltaTarea(controladora);
 
             }
         });
@@ -119,7 +125,7 @@ public class PanelTareas extends JPanel{
         listarTareasSinPersonas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new PanelListarTareasSinPersonas(controlador, modelo);
+                new PanelListarTareasSinPersonas(controladora, modelo);
             }
         });
 
@@ -149,7 +155,7 @@ public class PanelTareas extends JPanel{
     private void insertarPersonaTarea(){
 
         try {
-            controlador.insertarPersonaTarea(textoIdTarea.getText(),textoDni.getText());
+            controladora.insertarPersonaTarea();
         }
         catch (PersonaNoAñadida | PersonaNoExistente | TareaNoExistente e){
             new VentanaEmergente(vista,e.getMessage(),true);
@@ -160,7 +166,7 @@ public class PanelTareas extends JPanel{
    private void eliminarPersonaTarea(){
 
         try {
-            controlador.eliminarPersonaTarea(textoIdTarea.getText(),textoDni.getText());
+            controladora.eliminarPersonaTarea();
         }
         catch (TareaNoExistente | PersonaNoEliminada | PersonaNoExistente  e ){
             new VentanaEmergente(vista,e.getMessage(),true);
@@ -169,7 +175,7 @@ public class PanelTareas extends JPanel{
 
     private void finalizarTarea(){
         try {
-            controlador.finalizarTarea(textoIdTarea.getText());
+            controladora.finalizarTarea();
         }
         catch (TareaNoExistente e ){
             new VentanaEmergente(vista,e.getMessage(),true);
@@ -178,10 +184,13 @@ public class PanelTareas extends JPanel{
 
     private void cambiarCosteTarea(){
         try {
-            controlador.cambiarCosteTarea(textoIdTarea.getText(),textoCoste.getText());
+            controladora.cambiarCosteTarea();
         }
         catch (TareaNoExistente e ){
             new VentanaEmergente(vista,e.getMessage(),true);
+        }
+        catch (InputMismatchException e1){
+            new VentanaEmergente(vista,"El valor de coste debe de ser numérico",true);
         }
     }
     public void vaciar() {
@@ -190,5 +199,67 @@ public class PanelTareas extends JPanel{
         textoCoste.setText("");
     }
 
-    public void actualizarTabla(){tabla.setModel(modelo.actualizarTablaTareas());}
+    public void actualizarTabla(){
+        tabla.setModel(modelo.actualizarTablaTareas());
+    }
+
+
+
+    String getTituloAltaTarea(){
+        return panelAltaTarea.getTitulo();
+    }
+
+    String getDescripcionAltaTarea(){
+        return panelAltaTarea.getDescripcion();
+    }
+
+    String getResponsableAltaTarea(){
+        return panelAltaTarea.getResponsable();
+    }
+
+    String getPrioridadAltaTarea(){
+        return panelAltaTarea.getPrioridad();
+    }
+
+    String getIdResultadoAltaTarea(){
+        return panelAltaTarea.getIdResultado();
+    }
+
+    String getTipoResultadoAltaTarea(){
+        return panelAltaTarea.getTipoResultado();
+    }
+
+    String getNhorasAltaTarea(){
+        return panelAltaTarea.getNhoras();
+    }
+
+    String getResultadoEsperadoAltaTarea(){
+        return panelAltaTarea.getResultadoEsperado();
+    }
+
+    String getTipoFacturaAltaTarea(){
+        return panelAltaTarea.getTipoFactura();
+    }
+
+    String getCosteAltaTarea(){
+        return panelAltaTarea.getCoste();
+    }
+
+    List<String> getPersonasAltaTarea(){
+        return panelAltaTarea.getPersonas();
+    }
+    List<String> getEtiquetasAltaTarea(){
+        return panelAltaTarea.getEtiquetas();
+    }
+
+    String getTitulo(){
+        return textoIdTarea.getText();
+    }
+    String getPersona(){
+        return textoDni.getText();
+    }
+
+    String getCoste(){
+        return textoCoste.getText();
+    }
 }

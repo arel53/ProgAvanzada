@@ -1,23 +1,28 @@
 package Aplicacion.Vista;
 
 import Aplicacion.Controlador.Controlador;
+import Aplicacion.Controlador.ImplementacionControlador;
+import Aplicacion.Modelo.ImplementacionModelo;
 import Aplicacion.Modelo.Modelo;
+import Aplicacion.Modelo.Tabla;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class PanelListarTareasSinPersonas {
 
     JFrame ventana = new JFrame("Listar tareas sin personas");
     JTextArea areaDatosLista = new JTextArea(20,10);
-    Controlador controlador;
+    Controlador controladora;
     Modelo modelo;
+    Tabla tabla;
 
-    public PanelListarTareasSinPersonas(Controlador controlador, Modelo modelo){
+    public PanelListarTareasSinPersonas(Controlador controladora, Modelo modelo){
 
-        this.controlador = controlador;
+        this.controladora = controladora;
         this.modelo = modelo;
 
-        JScrollPane panel = new JScrollPane(areaDatosLista);
+        /*JScrollPane panel = new JScrollPane(areaDatosLista);
         panel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         panel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         actualizar();
@@ -27,7 +32,19 @@ public class PanelListarTareasSinPersonas {
         ventana.setBounds(100, 100, 1250, 300);
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
-        areaDatosLista.setEditable(false);
+        areaDatosLista.setEditable(false);*/
+
+        Container contenedor = new Container();
+        contenedor.setLayout(new BoxLayout(contenedor,BoxLayout.PAGE_AXIS));
+        tabla=modelo.crearTablaTareas();
+        actualizarTabla();
+        contenedor.add(new JScrollPane(tabla));
+        ventana.getContentPane().add(contenedor);
+        actualizarTabla();
+        ventana.setBounds(100, 100, 1250, 300);
+        ventana.setLocationRelativeTo(null);
+        //ventana.pack();
+        ventana.setVisible(true);
 
 
     }
@@ -38,4 +55,8 @@ public class PanelListarTareasSinPersonas {
         areaDatosLista.append(String.valueOf(datos));
 
     }
+    public void actualizarTabla(){
+        tabla.setModel(modelo.actualizarTablaTareasSinPersonas());
+    }
+
 }

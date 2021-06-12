@@ -1,6 +1,7 @@
 package Aplicacion.Vista;
 
 import Aplicacion.Controlador.Controlador;
+import Aplicacion.Controlador.ImplementacionControlador;
 import Aplicacion.Excepcion.PersonaNoAñadida;
 
 import javax.swing.*;
@@ -9,15 +10,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PanelAltaPersona {
-    private Controlador controlador;
+    private Controlador controladora;
     private JTextField dni = new JTextField(10);
     private JTextField nombre = new JTextField(20);
     private JTextField correo = new JTextField(20);
     private JButton insertar = new JButton("Insertar");
     private JFrame ventana= new JFrame("Insertar cliente");
 
-    public PanelAltaPersona(Controlador controlador){
-        this.controlador=controlador;
+    public PanelAltaPersona(Controlador controladora){
+        this.controladora = controladora;
         ventana.setLayout(new GridLayout(4,2));
         Container contenedor=ventana.getContentPane();
 
@@ -56,10 +57,24 @@ public class PanelAltaPersona {
     private void insertarPersona(){
 
         try {
-            controlador.insertarPersona(nombre.getText(),dni.getText(),correo.getText());
+            controladora.insertarPersona();
         }
         catch (PersonaNoAñadida e){
             new VentanaEmergente(ventana,e.getMessage(),true);
         }
     }
+
+    public String getDni(){
+        return dni.getText();
+    }
+
+    String getNombre(){
+        return nombre.getText();
+    }
+
+    String getCorreo(){
+        return correo.getText();
+    }
+
+
 }

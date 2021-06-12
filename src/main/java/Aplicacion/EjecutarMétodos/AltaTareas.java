@@ -50,7 +50,7 @@ public class AltaTareas {
                     if (dni.equals("q"))
                         break;
                     p = proyecto.getPersona(dni);
-                    NoAñadirPersona.ejecutaNoAñadirPersona(dni, personas);
+                    NoAñadirPersona.ejecutaAñadirPersonaExcepcion(dni, personas);
                     personas.add(p);
                 } catch (PersonaNoExistente | PersonaNoAñadida e) {
                     System.out.println(e.getMessage());
@@ -90,7 +90,7 @@ public class AltaTareas {
             String id = sn.next();
 
             System.out.format("\nIntroduce el nº de horas invertido en su producción --> ");
-            int horas = sn.nextInt();
+            double horas = sn.nextDouble();
 
             System.out.format("\nElija la opcion\n\n(interno) si es resultado interno\n(comercializado) si está destinado a ser comercializado\n--> ");
             String tipo = sn.next();

@@ -42,8 +42,10 @@ public class Proyecto implements Serializable{
     }
 
     public void altaPersona(Personas persona) throws PersonaNoAñadida {
+        if (persona.getClave().equals(""))
+            throw new PersonaNoAñadida("No se ha añadido a la persona ya que el campo del DNI está vacio");
         if (!UtilidadesParaListas.insertarEnLista(persona.getClave(), personas))
-            throw new PersonaNoAñadida();
+            throw new PersonaNoAñadida("No se ha añadido a la persona '" + persona.getClave() + "'");
         personas.add(persona);
     }
 
