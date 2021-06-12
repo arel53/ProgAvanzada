@@ -1,11 +1,11 @@
 package Aplicacion.Vista;
 
 import Aplicacion.Controlador.Controlador;
+import Aplicacion.Controlador.ImplementacionControlador;
+import Aplicacion.Modelo.ImplementacionModelo;
 import Aplicacion.Modelo.Modelo;
 import Aplicacion.Modelo.Tabla;
 
-import javax.accessibility.Accessible;
-import javax.management.remote.JMXConnectorFactory;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 
 public class PanelPersonas extends JPanel{
 
-    private Controlador controlador;
+    private Controlador controladora;
     private JFrame vista;
     private Modelo modelo;
     //private JTextArea zonaTextoPersonas = new JTextArea(20,80);
@@ -21,16 +21,18 @@ public class PanelPersonas extends JPanel{
     private Container contenedor;
     JPanel panelOpciones;
     Tabla tabla;
+    PanelAltaPersona panelAltaPersona;
 
 
-    public PanelPersonas(Modelo modelo, JFrame vista, Controlador controlador){
+    public PanelPersonas(Modelo modelo, JFrame vista, Controlador controladora){
 
-        this.controlador = controlador;
+        this.controladora = controladora;
         this.vista = vista;
         this.modelo = modelo;
 
         JButton insertarPersona = new JButton("Insertar persona");
         JButton listarPersonasnoResponsables = new JButton("Listar personas no responsables");
+
 
 
         /*JLabel dni = new JLabel("Dni de la persona: ");
@@ -51,14 +53,14 @@ public class PanelPersonas extends JPanel{
         insertarPersona.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new PanelAltaPersona(controlador);
+                panelAltaPersona = new PanelAltaPersona(controladora);
             }
         });
 
         listarPersonasnoResponsables.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new PanelListarPersonasNoResponsables(controlador,modelo);
+                new PanelListarPersonasNoResponsables(controladora,modelo);
             }
         });
 
@@ -109,5 +111,15 @@ public class PanelPersonas extends JPanel{
 
     public void actualizarTabla(){
         tabla.setModel(modelo.actualizarTabla());
+    }
+
+    public String getDni(){
+        return panelAltaPersona.getDni();
+    }
+    public String getNombre(){
+        return panelAltaPersona.getNombre();
+    }
+    public String getCorreo(){
+        return panelAltaPersona.getCorreo();
     }
 }

@@ -85,7 +85,7 @@ class AltaPersonasTestExcepciones {
     @Test
     void NoAñadirPersona(){
         try {
-            NoAñadirPersona.ejecutaNoAñadirPersona(persona.getClave(),proyecto.listarPersonas());
+            NoAñadirPersona.ejecutaAñadirPersonaExcepcion(persona.getClave(),proyecto.listarPersonas());
             fail("No se ha lanzado la excepción");
 
         }

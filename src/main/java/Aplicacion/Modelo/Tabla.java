@@ -8,5 +8,4 @@ public class Tabla extends JTable {
         super(modelo);
         setAutoCreateRowSorter(true);
     }
-
 }

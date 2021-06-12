@@ -1,16 +1,13 @@
 package Aplicacion.EjecutarMétodos;
 
 import Aplicacion.EjecutarExcepciones.NoAñadirPersona;
-import Aplicacion.Excepcion.PersonaExistente;
 import Aplicacion.Excepcion.PersonaNoAñadida;
 import Aplicacion.Excepcion.PersonaNoExistente;
 import Aplicacion.Excepcion.TareaNoExistente;
-import Aplicacion.Listas.UtilidadesParaListas;
 import Aplicacion.Persona.Personas;
 import Aplicacion.Proyecto.Proyecto;
 import Aplicacion.Tareas.Tareas;
 
-import java.io.Serializable;
 import java.util.Scanner;
 
 public class IntroducirPersonaTarea{
@@ -38,7 +35,7 @@ public class IntroducirPersonaTarea{
 
             persona = proyecto.getPersona(dni);
 
-            NoAñadirPersona.ejecutaNoAñadirPersona(dni,tarea.getLista());
+            NoAñadirPersona.ejecutaAñadirPersonaExcepcion(dni,tarea.getLista());
 
             tarea.introducirPersonaTarea(persona);
             System.out.format("\nSe ha añadido correctamente a la persona en la tarea");

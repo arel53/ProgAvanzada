@@ -1,18 +1,16 @@
 package Aplicacion.Vista;
 
 import Aplicacion.Controlador.Controlador;
+import Aplicacion.Controlador.ImplementacionControlador;
 import Aplicacion.Excepcion.PersonaNoAñadida;
 import Aplicacion.Excepcion.PersonaNoExistente;
 import Aplicacion.Excepcion.TareaExistente;
-import Aplicacion.Persona.Personas;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,7 +18,7 @@ import java.util.List;
 public class PanelAltaTarea {
 
 
-    private Controlador controlador;
+    private Controlador controladora;
     private JTextField titulo = new JTextField();
     private JTextField descripcion = new JTextField();
     private JButton personas = new JButton("Añadir personas");
@@ -50,8 +48,8 @@ public class PanelAltaTarea {
     private String tipoFactura = "CONSUMOINTERNO";
     private String resultadoEsperado = "BIBLIOTECA";
 
-    public PanelAltaTarea(Controlador controlador){
-        this.controlador = controlador;
+    public PanelAltaTarea(Controlador controladora){
+        this.controladora = controladora;
 
         ventana = new JFrame("Alta tarea");
 
@@ -157,6 +155,14 @@ public class PanelAltaTarea {
             @Override
             public void actionPerformed(ActionEvent e) {
                 insertarTarea();
+                if (personasAñadir != null) {
+                    personasAñadir.vaciarPersonas();
+                    personasAñadir.actualizarPersonasQueVasAAñadir();
+                }
+                if (etiquetasAñadir != null) {
+                    etiquetasAñadir.vaciarEtiquetas();
+                    etiquetasAñadir.actualizarEtiquetasQueVasAAñadir();
+                }
             }
         });
 
@@ -229,27 +235,70 @@ public class PanelAltaTarea {
     }
 
     private void insertarTarea(){
-        List<String> etiquetas = new LinkedList<>();
-        List<String> personas = new LinkedList<>();
         try {
-            if (personasAñadir != null)
-                personas = personasAñadir.getPersonas();
-            if (etiquetasAñadir != null)
-                etiquetas = etiquetasAñadir.getEtiquetas();
-            controlador.altaTarea(titulo.getText(),descripcion.getText(),personas,responsable.getText(),prioridad.getText(),idResultado.getText(),nHoras.getText(),tipoResultado,resultadoEsperado,etiquetas,coste.getText(),tipoFactura);
+            controladora.altaTarea();
             vaciar();
         }
         catch (TareaExistente | PersonaNoAñadida | PersonaNoExistente e){
             new VentanaEmergente(ventana,e.getMessage(),true);
         }
         catch (Exception e1) {
-            new VentanaEmergente(ventana, "Debes rellenar los campos correctamente", true);
+            new VentanaEmergente(ventana, "Debes rellenar los campos correctamente ->\nPrioridad: Entero \nNúmero de horas: Decimal \nCoste: Decimal    (Ejemplo -> 0.2)", true);
         }
 
         //titulo,descrip,personas,responable,prioridad,idresul,nhoras,,interno/comer,creac,tipofac,coste,fac,etiquetas
     }
 
+    public String getTitulo(){
+        return titulo.getText();
+    }
 
+    String getDescripcion(){
+        return descripcion.getText();
+    }
+
+    String getResponsable(){
+        return responsable.getText();
+    }
+
+    String getPrioridad(){
+        return prioridad.getText();
+    }
+
+    String getIdResultado(){
+        return idResultado.getText();
+    }
+
+    String getTipoResultado(){
+        return tipoResultado;
+    }
+
+    String getNhoras(){
+        return nHoras.getText();
+    }
+
+    String getResultadoEsperado(){
+        return resultadoEsperado;
+    }
+
+    String getTipoFactura(){
+        return tipoFactura;
+    }
+
+    String getCoste(){
+        return coste.getText();
+    }
+    List<String> getPersonas(){
+        if (personasAñadir != null)
+            return personasAñadir.getPersonas();
+        else return new LinkedList<>();
+
+    }
+    List<String> getEtiquetas(){
+        if (etiquetasAñadir != null)
+            return etiquetasAñadir.getEtiquetas();
+        return new LinkedList<>();
+    }
 
 
 

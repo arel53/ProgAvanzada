@@ -6,6 +6,8 @@ import Aplicacion.Proyecto.Proyecto;
 import Aplicacion.Tareas.Tareas;
 import Aplicacion.Tareas.calcularFacturacion;
 
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class SetCoste {
@@ -40,6 +42,9 @@ public class SetCoste {
         }
         catch (TareaNoExistente e){
             System.out.println("\nLa tarea no existe");
+        }
+        catch (InputMismatchException e1){
+            System.out.println("\nEl dato a introducir debe ser un valor numérico");
         }
 
 

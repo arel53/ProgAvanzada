@@ -9,7 +9,7 @@ import java.util.List;
 public class ModeloTablaPersonas extends AbstractTableModel {
 
 
-    final List<String> cabeceras = Arrays.asList("Dni","Nombre","Correo electonico");
+    final List<String> cabeceras = Arrays.asList("Titulo","Nombre","Correo electonico");
     List<Personas> datos;
 
     public ModeloTablaPersonas(final List<Personas> datos){
